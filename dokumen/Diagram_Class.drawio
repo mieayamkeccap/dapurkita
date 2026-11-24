@@ -1,0 +1,320 @@
+<mxfile host="app.diagrams.net" agent="VibeCode" version="24.0.0">
+  <diagram id="class" name="Class Diagram">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1240" pageHeight="1040" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="judul" value="CLASS DIAGRAM DAPURKITA" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="10" width="600" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="lbl-f" value="FRONTEND (Flutter)" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="55" width="300" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="lbl-b" value="BACKEND (Express)" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="910" y="55" width="300" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-product" value="" style="group;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" connectable="1" parent="1">
+          <mxGeometry x="60" y="90" width="260" height="176" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-product-head" value="ProductModel" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="90" width="260" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-product-a0" value="- id: int" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="118" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-product-a1" value="- categoryId: int" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="136" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-product-a2" value="- categoryName: String" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="154" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-product-a3" value="- name: String" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="172" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-product-a4" value="- price: int" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="190" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-product-a5" value="- imageUrl: String" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="208" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-product-a6" value="- isAvailable: bool" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="226" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-product-m0" value="+ fromJson(json)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="244" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-category" value="" style="group;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" connectable="1" parent="1">
+          <mxGeometry x="60" y="330" width="260" height="104" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-category-head" value="CategoryModel" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="330" width="260" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-category-a0" value="- id: int" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="358" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-category-a1" value="- name: String" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="376" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-category-a2" value="- description: String" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="394" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-category-m0" value="+ fromJson(json)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="412" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-order" value="" style="group;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" connectable="1" parent="1">
+          <mxGeometry x="60" y="540" width="260" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-order-head" value="OrderModel" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="540" width="260" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-order-a0" value="- id: int" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="568" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-order-a1" value="- orderCode: String" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="586" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-order-a2" value="- orderStatus: String" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="604" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-order-a3" value="- totalAmount: int" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="622" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-order-a4" value="- items: List" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="640" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-order-m0" value="+ fromJson(json)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="60" y="658" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderitem" value="" style="group;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" connectable="1" parent="1">
+          <mxGeometry x="380" y="540" width="260" height="158" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderitem-head" value="OrderItemModel" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="380" y="540" width="260" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderitem-a0" value="- productId: int" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="568" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderitem-a1" value="- productName: String" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="586" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderitem-a2" value="- quantity: int" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="604" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderitem-a3" value="- price: int" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="622" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderitem-a4" value="- subtotal: int" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="640" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderitem-m0" value="+ fromJson(json)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="658" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderitem-m1" value="+ bacaAngka(nilai)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="676" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-cart" value="" style="group;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" connectable="1" parent="1">
+          <mxGeometry x="380" y="90" width="260" height="86" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-cart-head" value="CartItemModel" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="380" y="90" width="260" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-cart-a0" value="- product: ProductModel" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="118" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-cart-a1" value="- quantity: int" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="136" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-cart-m0" value="+ subtotal()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="154" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-api" value="" style="group;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" connectable="1" parent="1">
+          <mxGeometry x="380" y="330" width="260" height="158" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-api-head" value="ApiService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="380" y="330" width="260" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-api-a0" value="- token: String" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="358" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-api-m0" value="+ loginUser()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="376" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-api-m1" value="+ registerUser()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="394" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-api-m2" value="+ getProducts()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="412" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-api-m3" value="+ getMyOrders()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="430" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-api-m4" value="+ updateOrderStatus()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="448" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-api-m5" value="+ tanganiSesiBerakhir()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="466" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-auth" value="" style="group;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" connectable="1" parent="1">
+          <mxGeometry x="910" y="90" width="260" height="104" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-auth-head" value="AuthService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="910" y="90" width="260" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-auth-a0" value="- _polaEmail: RegExp" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="118" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-auth-m0" value="+ pesanEmailTidakValid()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="136" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-auth-m1" value="+ login()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="154" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-auth-m2" value="+ register()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="172" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-authc" value="" style="group;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" connectable="1" parent="1">
+          <mxGeometry x="910" y="330" width="260" height="86" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-authc-head" value="AuthController" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="910" y="330" width="260" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-authc-a0" value="- db" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="358" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-authc-m0" value="+ register(req,res)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="376" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-authc-m1" value="+ login(req,res)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="394" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderc" value="" style="group;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" connectable="1" parent="1">
+          <mxGeometry x="910" y="540" width="260" height="122" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderc-head" value="OrderController" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="910" y="540" width="260" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderc-a0" value="- ONGKIR = 5000" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="568" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderc-m0" value="+ createOrder()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="586" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderc-m1" value="+ getMyOrders()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="604" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderc-m2" value="+ updateOrderStatus()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="622" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-orderc-m3" value="+ completeOrderByCustomer()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="640" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-productc" value="" style="group;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" connectable="1" parent="1">
+          <mxGeometry x="910" y="820" width="260" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-productc-head" value="ProductController" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="910" y="820" width="260" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-productc-a0" value="- db" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="848" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-productc-a1" value="- cloudinary" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="866" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-productc-m0" value="+ getProducts()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="884" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-productc-m1" value="+ createProduct()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="902" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-productc-m2" value="+ updateProduct()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="920" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-productc-m3" value="+ deleteProduct()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="910" y="938" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-dashc" value="" style="group;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" connectable="1" parent="1">
+          <mxGeometry x="380" y="820" width="260" height="122" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-dashc-head" value="DashboardController" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="380" y="820" width="260" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-dashc-a0" value="- db" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="848" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-dashc-m0" value="+ getSummary()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="866" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-dashc-m1" value="+ getTopProducts()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="884" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-dashc-m2" value="+ getDailyOrders()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="902" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="c-dashc-m3" value="+ getLowStock()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=9;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;" vertex="1" parent="1">
+          <mxGeometry x="380" y="920" width="260" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-cart-prod" value="uses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;endArrow=classic;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="c-cart" target="c-product">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-order-oi" value="1..*" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;endArrow=classic;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="c-order" target="c-orderitem">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-api-prod" value="creates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;endArrow=classic;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="c-api" target="c-product">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="350" y="407"/>
+              <mxPoint x="350" y="200"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-api-ord" value="creates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;endArrow=classic;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="c-api" target="c-order">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="407"/>
+              <mxPoint x="340" y="608"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-api-auth" value="calls" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;endArrow=classic;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="c-auth" target="c-api">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="180"/>
+              <mxPoint x="700" y="180"/>
+              <mxPoint x="700" y="407"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-auth-authc" value="HTTP /api/auth" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;endArrow=classic;endFill=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c-auth" target="c-authc">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-api-orderc" value="HTTP /api/orders" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;endArrow=classic;endFill=1;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="c-api" target="c-orderc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="790" y="407"/>
+              <mxPoint x="790" y="599"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-api-productc" value="HTTP /api/products" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;endArrow=classic;endFill=1;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="c-api" target="c-productc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="815" y="407"/>
+              <mxPoint x="815" y="888"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-orderc-order" value="maps" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;endArrow=classic;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="c-orderc" target="c-order">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="760"/>
+              <mxPoint x="190" y="760"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
