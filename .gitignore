@@ -1,0 +1,36 @@
+# ===== Rahasia & lingkungan =====
+.env
+.env.local
+.env.production
+**/.env
+Backend/.env
+
+# ===== Node / Backend =====
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===== Flutter / Frontend =====
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+coverage/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+
+# ===== IDE & OS =====
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ===== Tool lokal (tidak untuk repo) =====
+.vibecode/
+AGENTS.md

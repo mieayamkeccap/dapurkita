@@ -1,0 +1,391 @@
+<mxfile host="65bd71144e">
+    <diagram id="erd-dapurkita" name="ERD DapurKita">
+        <mxGraphModel dx="323" dy="217" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1380" pageHeight="1330" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="judul" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#000000;" value="ER DIAGRAM DAPURKITA" vertex="1">
+                    <mxGeometry height="40" width="600" x="60" y="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-users" parent="1" style="group;fillColor=#FFFFFF;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="186" width="260" x="80" y="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-users-head" parent="tbl-users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" value="users" vertex="1">
+                    <mxGeometry height="26" width="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-users-r0" parent="tbl-users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[PK]  id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-users-r1" parent="tbl-users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="name : varchar(100)" vertex="1">
+                    <mxGeometry height="20" width="260" y="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-users-r2" parent="tbl-users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[UQ]  email : varchar(100)" vertex="1">
+                    <mxGeometry height="20" width="260" y="66" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-users-r3" parent="tbl-users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="password : varchar(255)" vertex="1">
+                    <mxGeometry height="20" width="260" y="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-users-r4" parent="tbl-users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="phone : varchar(20)" vertex="1">
+                    <mxGeometry height="20" width="260" y="106" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-users-r5" parent="tbl-users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="role : enum" vertex="1">
+                    <mxGeometry height="20" width="260" y="126" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-users-r6" parent="tbl-users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="created_at : timestamp" vertex="1">
+                    <mxGeometry height="20" width="260" y="146" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-users-r7" parent="tbl-users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="updated_at : timestamp" vertex="1">
+                    <mxGeometry height="20" width="260" y="166" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-categories" parent="1" style="group;fillColor=#FFFFFF;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="106" width="260" x="520" y="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-categories-head" parent="tbl-categories" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" value="categories" vertex="1">
+                    <mxGeometry height="26" width="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-categories-r0" parent="tbl-categories" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[PK]  id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-categories-r1" parent="tbl-categories" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="name : varchar(100)" vertex="1">
+                    <mxGeometry height="20" width="260" y="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-categories-r2" parent="tbl-categories" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="description : text" vertex="1">
+                    <mxGeometry height="20" width="260" y="66" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-categories-r3" parent="tbl-categories" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="created_at : timestamp" vertex="1">
+                    <mxGeometry height="20" width="260" y="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-products" parent="1" style="group;fillColor=#FFFFFF;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="206" width="260" x="520" y="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-products-head" parent="tbl-products" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" value="products" vertex="1">
+                    <mxGeometry height="26" width="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-products-r0" parent="tbl-products" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[PK]  id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-products-r1" parent="tbl-products" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[FK]  category_id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-products-r2" parent="tbl-products" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="name : varchar(150)" vertex="1">
+                    <mxGeometry height="20" width="260" y="66" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-products-r3" parent="tbl-products" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="description : text" vertex="1">
+                    <mxGeometry height="20" width="260" y="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-products-r4" parent="tbl-products" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="price : decimal(12,2)" vertex="1">
+                    <mxGeometry height="20" width="260" y="106" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-products-r5" parent="tbl-products" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="image_url : text" vertex="1">
+                    <mxGeometry height="20" width="260" y="126" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-products-r6" parent="tbl-products" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="is_available : tinyint(1)" vertex="1">
+                    <mxGeometry height="20" width="260" y="146" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-products-r7" parent="tbl-products" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="created_at : timestamp" vertex="1">
+                    <mxGeometry height="20" width="260" y="166" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-products-r8" parent="tbl-products" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="updated_at : timestamp" vertex="1">
+                    <mxGeometry height="20" width="260" y="186" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders" parent="1" style="group;fillColor=#FFFFFF;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="346" width="260" x="80" y="346" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-head" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" value="orders" vertex="1">
+                    <mxGeometry height="26" width="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r0" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[PK]  id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r1" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[FK]  user_id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r2" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[UQ]  order_code : varchar(30)" vertex="1">
+                    <mxGeometry height="20" width="260" y="66" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r3" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="delivery_method : enum" vertex="1">
+                    <mxGeometry height="20" width="260" y="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r4" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="order_type : enum" vertex="1">
+                    <mxGeometry height="20" width="260" y="106" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r5" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="scheduled_at : datetime" vertex="1">
+                    <mxGeometry height="20" width="260" y="126" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r6" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="recipient_name : varchar(100)" vertex="1">
+                    <mxGeometry height="20" width="260" y="146" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r7" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="recipient_phone : varchar(20)" vertex="1">
+                    <mxGeometry height="20" width="260" y="166" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r8" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="delivery_address : text" vertex="1">
+                    <mxGeometry height="20" width="260" y="186" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r9" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="notes : text" vertex="1">
+                    <mxGeometry height="20" width="260" y="206" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r10" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="subtotal : decimal(12,2)" vertex="1">
+                    <mxGeometry height="20" width="260" y="226" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r11" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="delivery_fee : decimal(12,2)" vertex="1">
+                    <mxGeometry height="20" width="260" y="246" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r12" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="total_amount : decimal(12,2)" vertex="1">
+                    <mxGeometry height="20" width="260" y="266" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r13" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="order_status : enum" vertex="1">
+                    <mxGeometry height="20" width="260" y="286" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r14" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="stock_deducted_at : datetime" vertex="1">
+                    <mxGeometry height="20" width="260" y="306" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-orders-r15" parent="tbl-orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="created_at : timestamp" vertex="1">
+                    <mxGeometry height="20" width="260" y="326" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-order_items" parent="1" style="group;fillColor=#FFFFFF;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="166" width="260" x="520" y="580" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-order_items-head" parent="tbl-order_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" value="order_items" vertex="1">
+                    <mxGeometry height="26" width="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-order_items-r0" parent="tbl-order_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[PK]  id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-order_items-r1" parent="tbl-order_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[FK]  order_id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-order_items-r2" parent="tbl-order_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[FK]  product_id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="66" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-order_items-r3" parent="tbl-order_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="product_name : varchar(150)" vertex="1">
+                    <mxGeometry height="20" width="260" y="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-order_items-r4" parent="tbl-order_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="quantity : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="106" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-order_items-r5" parent="tbl-order_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="price : decimal(12,2)" vertex="1">
+                    <mxGeometry height="20" width="260" y="126" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-order_items-r6" parent="tbl-order_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="subtotal : decimal(12,2)" vertex="1">
+                    <mxGeometry height="20" width="260" y="146" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-payments" parent="1" style="group;fillColor=#FFFFFF;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="146" width="260" x="80" y="800" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-payments-head" parent="tbl-payments" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" value="payments" vertex="1">
+                    <mxGeometry height="26" width="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-payments-r0" parent="tbl-payments" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[PK]  id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-payments-r1" parent="tbl-payments" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[FK,UQ]  order_id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-payments-r2" parent="tbl-payments" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="payment_method : enum" vertex="1">
+                    <mxGeometry height="20" width="260" y="66" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-payments-r3" parent="tbl-payments" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="payment_status : enum" vertex="1">
+                    <mxGeometry height="20" width="260" y="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-payments-r4" parent="tbl-payments" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="paid_at : datetime" vertex="1">
+                    <mxGeometry height="20" width="260" y="106" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-payments-r5" parent="tbl-payments" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="created_at : timestamp" vertex="1">
+                    <mxGeometry height="20" width="260" y="126" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredients" parent="1" style="group;fillColor=#FFFFFF;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="146" width="260" x="980" y="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredients-head" parent="tbl-ingredients" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" value="ingredients" vertex="1">
+                    <mxGeometry height="26" width="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredients-r0" parent="tbl-ingredients" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[PK]  id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredients-r1" parent="tbl-ingredients" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="name : varchar(100)" vertex="1">
+                    <mxGeometry height="20" width="260" y="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredients-r2" parent="tbl-ingredients" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="unit : varchar(30)" vertex="1">
+                    <mxGeometry height="20" width="260" y="66" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredients-r3" parent="tbl-ingredients" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="stock : decimal(12,2)" vertex="1">
+                    <mxGeometry height="20" width="260" y="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredients-r4" parent="tbl-ingredients" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="minimum_stock : decimal(12,2)" vertex="1">
+                    <mxGeometry height="20" width="260" y="106" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredients-r5" parent="tbl-ingredients" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="updated_at : timestamp" vertex="1">
+                    <mxGeometry height="20" width="260" y="126" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-product_ingredients" parent="1" style="group;fillColor=#FFFFFF;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="106" width="260" x="980" y="350" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-product_ingredients-head" parent="tbl-product_ingredients" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" value="product_ingredients" vertex="1">
+                    <mxGeometry height="26" width="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-product_ingredients-r0" parent="tbl-product_ingredients" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[PK]  id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-product_ingredients-r1" parent="tbl-product_ingredients" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[FK]  product_id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-product_ingredients-r2" parent="tbl-product_ingredients" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[FK]  ingredient_id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="66" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-product_ingredients-r3" parent="tbl-product_ingredients" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="quantity : decimal(12,2)" vertex="1">
+                    <mxGeometry height="20" width="260" y="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchases" parent="1" style="group;fillColor=#FFFFFF;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="166" width="260" x="980" y="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchases-head" parent="tbl-ingredient_purchases" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" value="ingredient_purchases" vertex="1">
+                    <mxGeometry height="26" width="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchases-r0" parent="tbl-ingredient_purchases" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[PK]  id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchases-r1" parent="tbl-ingredient_purchases" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[FK]  user_id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchases-r2" parent="tbl-ingredient_purchases" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="supplier_name : varchar(150)" vertex="1">
+                    <mxGeometry height="20" width="260" y="66" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchases-r3" parent="tbl-ingredient_purchases" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="purchase_date : date" vertex="1">
+                    <mxGeometry height="20" width="260" y="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchases-r4" parent="tbl-ingredient_purchases" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="total_amount : decimal(12,2)" vertex="1">
+                    <mxGeometry height="20" width="260" y="106" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchases-r5" parent="tbl-ingredient_purchases" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="notes : text" vertex="1">
+                    <mxGeometry height="20" width="260" y="126" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchases-r6" parent="tbl-ingredient_purchases" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="created_at : timestamp" vertex="1">
+                    <mxGeometry height="20" width="260" y="146" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchase_items" parent="1" style="group;fillColor=#FFFFFF;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="146" width="260" x="980" y="760" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchase_items-head" parent="tbl-ingredient_purchase_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" value="ingredient_purchase_items" vertex="1">
+                    <mxGeometry height="26" width="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchase_items-r0" parent="tbl-ingredient_purchase_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[PK]  id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchase_items-r1" parent="tbl-ingredient_purchase_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[FK]  purchase_id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchase_items-r2" parent="tbl-ingredient_purchase_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[FK]  ingredient_id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="66" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchase_items-r3" parent="tbl-ingredient_purchase_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="quantity : decimal(12,2)" vertex="1">
+                    <mxGeometry height="20" width="260" y="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchase_items-r4" parent="tbl-ingredient_purchase_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="unit_cost : decimal(12,2)" vertex="1">
+                    <mxGeometry height="20" width="260" y="106" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-ingredient_purchase_items-r5" parent="tbl-ingredient_purchase_items" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="subtotal : decimal(12,2)" vertex="1">
+                    <mxGeometry height="20" width="260" y="126" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-expenses" parent="1" style="group;fillColor=#FFFFFF;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="206" width="260" x="980" y="980" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-expenses-head" parent="tbl-expenses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;" value="expenses" vertex="1">
+                    <mxGeometry height="26" width="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-expenses-r0" parent="tbl-expenses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[PK]  id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-expenses-r1" parent="tbl-expenses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[FK]  user_id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-expenses-r2" parent="tbl-expenses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="[FK,UQ]  purchase_id : int" vertex="1">
+                    <mxGeometry height="20" width="260" y="66" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-expenses-r3" parent="tbl-expenses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="title : varchar(150)" vertex="1">
+                    <mxGeometry height="20" width="260" y="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-expenses-r4" parent="tbl-expenses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="category : varchar(100)" vertex="1">
+                    <mxGeometry height="20" width="260" y="106" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-expenses-r5" parent="tbl-expenses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="amount : decimal(12,2)" vertex="1">
+                    <mxGeometry height="20" width="260" y="126" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-expenses-r6" parent="tbl-expenses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="description : text" vertex="1">
+                    <mxGeometry height="20" width="260" y="146" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-expenses-r7" parent="tbl-expenses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="expense_date : date" vertex="1">
+                    <mxGeometry height="20" width="260" y="166" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl-expenses-r8" parent="tbl-expenses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontSize=10;fontFamily=Courier New;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=4;overflow=hidden;" value="created_at : timestamp" vertex="1">
+                    <mxGeometry height="20" width="260" y="186" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-orders-users" edge="1" parent="1" source="tbl-orders" style="rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;startArrow=ERmany;endArrow=ERone;startFill=0;endFill=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="tbl-users" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-order_items-orders" edge="1" parent="1" source="tbl-order_items" style="rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;startArrow=ERmany;endArrow=ERone;startFill=0;endFill=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=entityRelationEdgeStyle;" target="tbl-orders" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-order_items-products" edge="1" parent="1" source="tbl-order_items" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;startArrow=ERmany;endArrow=ERone;startFill=0;endFill=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="tbl-products" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-products-categories" edge="1" parent="1" source="tbl-products" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;startArrow=ERmany;endArrow=ERone;startFill=0;endFill=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="tbl-categories" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-payments-orders" edge="1" parent="1" source="tbl-payments" style="rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;startArrow=ERmany;endArrow=ERone;startFill=0;endFill=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="tbl-orders" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-product_ingredients-products" edge="1" parent="1" source="tbl-product_ingredients" style="rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;startArrow=ERmany;endArrow=ERone;startFill=0;endFill=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="tbl-products" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-product_ingredients-ingredients" edge="1" parent="1" source="tbl-product_ingredients" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;startArrow=ERmany;endArrow=ERone;startFill=0;endFill=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="tbl-ingredients" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-ingredient_purchases-users" edge="1" parent="1" source="tbl-ingredient_purchases" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;startArrow=ERmany;endArrow=ERone;startFill=0;endFill=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" target="tbl-users" value="">
+                    <mxGeometry relative="1" x="0.0003" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="880" y="603"/>
+                            <mxPoint x="880" y="1220"/>
+                            <mxPoint x="35" y="1220"/>
+                            <mxPoint x="35" y="135.8"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge-ingredient_purchase_items-ingredient_purchases" edge="1" parent="1" source="tbl-ingredient_purchase_items" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;startArrow=ERmany;endArrow=ERone;startFill=0;endFill=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="tbl-ingredient_purchases" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-ingredient_purchase_items-ingredients" edge="1" parent="1" source="tbl-ingredient_purchase_items" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;startArrow=ERmany;endArrow=ERone;startFill=0;endFill=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="tbl-ingredients" value="">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="850" y="833"/>
+                            <mxPoint x="850" y="70"/>
+                            <mxPoint x="1110" y="70"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge-expenses-users" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;startArrow=ERmany;endArrow=ERone;startFill=0;endFill=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.8;entryDx=0;entryDy=0;" value="">
+                    <mxGeometry relative="1" x="-0.0001" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="910" y="1074.2"/>
+                            <mxPoint x="910" y="1241.2"/>
+                            <mxPoint x="15" y="1241.2"/>
+                            <mxPoint x="15" y="220"/>
+                        </Array>
+                        <mxPoint x="980" y="1074.2" as="sourcePoint"/>
+                        <mxPoint x="80" y="220" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge-expenses-ingredient_purchases" edge="1" parent="1" source="tbl-expenses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=9;fontColor=#000000;strokeColor=#000000;startArrow=ERmandOne;endArrow=ERmandOne;startFill=0;endFill=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="tbl-ingredient_purchases" value="">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1280" y="1083"/>
+                            <mxPoint x="1280" y="603"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="legend" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=10;fontFamily=Helvetica;fontColor=#000000;strokeColor=#000000;fillColor=#FFFFFF;spacing=8;" value="[PK] = Primary Key&lt;br&gt;[FK] = Foreign Key&lt;br&gt;[UQ] = Unique&lt;br&gt;Ujung garis: banyak (N) &amp;harr; satu (1)" vertex="1">
+                    <mxGeometry height="90" width="260" x="520" y="830" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
