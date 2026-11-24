@@ -172,20 +172,15 @@ const deleteIngredient = async (req, res) => {
             });
         }
 
-        const [usedIngredients] = await db.promise().query(
-            'SELECT id FROM product_ingredients WHERE ingredient_id = ? LIMIT 1',
-            [id]
-        );
-
         const [purchaseItems] = await db.promise().query(
             'SELECT id FROM ingredient_purchase_items WHERE ingredient_id = ? LIMIT 1',
             [id]
         );
 
-        if (usedIngredients.length > 0 || purchaseItems.length > 0) {
+        if (purchaseItems.length > 0) {
             return res.status(409).json({
                 success: false,
-                message: 'Bahan baku masih digunakan dalam resep atau riwayat pembelian'
+                message: 'Bahan baku masih digunakan dalam riwayat pembelian'
             });
         }
 

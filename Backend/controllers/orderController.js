@@ -438,9 +438,8 @@ const updateOrderStatus = async (req, res) => {
         }
 
         // Simpan status pesanan.
-        // Stok bahan tidak dipotong di sini: resep/bahan baku tidak dikelola
-        // dari aplikasi (tabel product_ingredients kosong), sehingga dulu
-        // setiap pesanan gagal masuk Diproses dengan "Resep ... belum dibuat".
+        // Stok bahan tidak dipotong di sini: tidak ada logika pengurangan
+        // stok dari aplikasi.
         await connection.query(
             'UPDATE orders SET order_status = ? WHERE id = ?',
             [order_status, id]

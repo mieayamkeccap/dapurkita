@@ -302,15 +302,10 @@ const deleteProduct = async (req, res) => {
             [id]
         );
 
-        const [ingredients] = await db.promise().query(
-            'SELECT id FROM product_ingredients WHERE product_id = ? LIMIT 1',
-            [id]
-        );
-
-        if (orderItems.length > 0 || ingredients.length > 0) {
+        if (orderItems.length > 0) {
             return res.status(409).json({
                 success: false,
-                message: 'Produk masih digunakan dalam pesanan atau resep bahan baku'
+                message: 'Produk masih digunakan dalam pesanan'
             });
         }
 
