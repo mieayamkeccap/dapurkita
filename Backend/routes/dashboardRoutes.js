@@ -5,7 +5,8 @@ const router = express.Router();
 const {
     getSummary,
     getDailyOrders,
-    getTopProducts
+    getTopProducts,
+    getProductSales
 } = require('../controllers/dashboardController');
 
 const authMiddleware = require('../middleware/authMiddleware');
@@ -18,5 +19,6 @@ router.use(roleMiddleware('admin'));
 router.get('/summary', getSummary);
 router.get('/daily-orders', getDailyOrders);
 router.get('/top-products', getTopProducts);
+router.get('/product-sales', getProductSales);
 
 module.exports = router;

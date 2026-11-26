@@ -20,4 +20,6 @@ class ApiConfig {
   static const String dashboardSummary = '$baseUrl/dashboard/summary';
   static const String dashboardTopProducts = '$baseUrl/dashboard/top-products';
   static const String dashboardDailyOrders = '$baseUrl/dashboard/daily-orders';
+  static const String dashboardProductSales =
+      '$baseUrl/dashboard/product-sales';
 }

@@ -8,6 +8,8 @@ Fitur utama:
 - Pembayaran transfer (langsung lunas) dengan ongkir flat Rp5.000
 - Upload foto produk lewat backend ke Cloudinary
 - Dashboard admin: ringkasan pendapatan, produk terlaris, pesanan harian, dan laporan
+- Halaman Pesanan admin menampilkan isi tiap pesanan (produk & jumlahnya) sebelum status diubah
+- Laporan admin punya grafik penjualan per produk, dikelompokkan per kategori, untuk 7 hari terakhir
 
 ## Struktur Folder
 

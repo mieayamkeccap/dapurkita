@@ -452,6 +452,36 @@ class ApiService {
     return hasil;
   }
 
+  // Penjualan per produk per hari untuk 7 hari terakhir, dikelompokkan
+  // per kategori. Produk yang belum pernah terjual tetap ikut dengan
+  // angka nol, supaya menu baru langsung punya grafik sendiri.
+  static Future<List<Map<String, dynamic>>> getProductSales() async {
+    http.Response response;
+
+    try {
+      response = await http.get(
+        Uri.parse(ApiConfig.dashboardProductSales),
+        headers: await headerLogin(),
+      );
+    } catch (error) {
+      throw Exception('Tidak bisa terhubung ke server');
+    }
+
+    Map<String, dynamic> body = bacaJson(response);
+
+    cekBerhasil(response, body, 'Gagal mengambil penjualan per produk');
+
+    List<Map<String, dynamic>> hasil = [];
+
+    if (body['data'] is List) {
+      for (var item in body['data']) {
+        hasil.add(item);
+      }
+    }
+
+    return hasil;
+  }
+
   // Menentukan Content-Type gambar dari ekstensi nama file.
   // Dipakai karena MultipartFile.fromBytes tidak menebak dari nama file.
   static MediaType tipeGambar(String? nama) {

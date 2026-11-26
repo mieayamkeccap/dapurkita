@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../models/order_item_model.dart';
 import '../../models/order_model.dart';
 import '../../services/api_service.dart';
 import '../../widgets/app_style.dart';
@@ -219,6 +220,32 @@ class _KelolaPesananScreenState extends State<KelolaPesananScreen> {
             style: GoogleFonts.poppins(fontSize: 10, color: AppStyle.abuTeks),
           ),
           const SizedBox(height: 8),
+          // Isi pesanan ditampilkan di kartu supaya admin tahu apa yang
+          // harus disiapkan saat memutuskan status berikutnya.
+          DaftarItemPesanan(order.items),
+          const SizedBox(height: 6),
+          Row(
+            children: [
+              Icon(
+                order.deliveryMethod == 'delivery'
+                    ? Icons.delivery_dining_rounded
+                    : Icons.storefront_rounded,
+                color: AppStyle.abuTeks,
+                size: 14,
+              ),
+              const SizedBox(width: 4),
+              Text(
+                order.deliveryMethod == 'delivery'
+                    ? 'Diantar'
+                    : 'Ambil di tempat',
+                style: GoogleFonts.poppins(
+                  fontSize: 10,
+                  color: AppStyle.abuTeks,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
           Row(
             children: [
               Text(
@@ -391,4 +418,63 @@ Future<bool> konfirmasiPesananSelesai(
   );
 
   return hasil == true;
+}
+
+// Isi pesanan: nama produk, jumlahnya, dan subtotal per baris.
+// Dibuat top-level supaya bisa dirender sendiri di widget test.
+class DaftarItemPesanan extends StatelessWidget {
+  final List<OrderItemModel> items;
+
+  const DaftarItemPesanan(this.items, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    if (items.isEmpty) {
+      return Text(
+        'Daftar item tidak tersedia.',
+        style: GoogleFonts.poppins(fontSize: 10, color: AppStyle.abuTeks),
+      );
+    }
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+      decoration: BoxDecoration(
+        color: AppStyle.hijauMuda,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          for (var item in items)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      '${item.productName} x${item.quantity}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.poppins(
+                        fontSize: 11,
+                        color: AppStyle.hijauTua,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    formatRupiah(item.subtotal),
+                    style: GoogleFonts.poppins(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                      color: AppStyle.hijauTua,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
 }

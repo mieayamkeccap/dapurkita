@@ -275,6 +275,36 @@ const getAllOrders = async (req, res) => {
              ORDER BY orders.id DESC`
         );
 
+        // Daftar produk yang dipesan ikut dikirim supaya admin tahu apa saja
+        // isi pesanan langsung dari halaman Pesanan, tanpa membuka satu per
+        // satu. Diambil sekali untuk semua pesanan, bukan satu query per
+        // pesanan.
+        const [daftarItem] = await db.promise().query(
+            `SELECT
+                order_id,
+                product_id,
+                product_name,
+                quantity,
+                price,
+                subtotal
+             FROM order_items
+             ORDER BY order_id, id`
+        );
+
+        const itemPerPesanan = {};
+
+        for (const item of daftarItem) {
+            if (!itemPerPesanan[item.order_id]) {
+                itemPerPesanan[item.order_id] = [];
+            }
+
+            itemPerPesanan[item.order_id].push(item);
+        }
+
+        for (const order of orders) {
+            order.items = itemPerPesanan[order.id] || [];
+        }
+
         res.status(200).json({
             success: true,
             message: 'Semua pesanan berhasil diambil',
