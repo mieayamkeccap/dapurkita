@@ -15,7 +15,7 @@ Fitur utama:
 
 ```
 DapurKita/
-├── Frontend/   # Aplikasi Flutter (lib/, test/, pubspec.yaml)
+├── Frontend/   # Aplikasi Flutter (lib/, pubspec.yaml)
 ├── Backend/    # API Express (server.js, controllers/, routes/, config/)
 └── Backend/erd/# File SQL ekspor & ERD database
 ```

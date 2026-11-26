@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../services/api_service.dart';
+import '../../utils/format.dart';
 import '../../widgets/app_style.dart';
 
 class LaporanScreen extends StatefulWidget {
@@ -40,8 +41,8 @@ class _LaporanScreenState extends State<LaporanScreen> {
       if (!mounted) return;
 
       setState(() {
-        totalPesanan = ambilAngka(ringkasan['total_orders']);
-        totalPendapatan = ambilAngka(ringkasan['total_revenue']);
+        totalPesanan = bacaAngkaDesimal(ringkasan['total_orders']);
+        totalPendapatan = bacaAngkaDesimal(ringkasan['total_revenue']);
         produkTerlaris = terlaris;
         penjualanProduk = perProduk;
         isLoading = false;
@@ -57,20 +58,6 @@ class _LaporanScreenState extends State<LaporanScreen> {
   }
 
   // Data dari server bisa berupa angka atau teks
-  int ambilAngka(dynamic nilai) {
-    if (nilai == null) {
-      return 0;
-    }
-
-    try {
-      // Bisa berupa angka biasa (29000) atau teks desimal dari MySQL
-      // DECIMAL ("29000.00"), jadi dibaca sebagai double dulu.
-      return double.parse(nilai.toString()).toInt();
-    } catch (error) {
-      return 0;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
@@ -202,32 +189,6 @@ class _LaporanScreenState extends State<LaporanScreen> {
   }
 }
 
-// Membaca angka dari server yang bisa berupa angka biasa atau teks
-// desimal ("4" atau "4.00").
-int ambilJumlah(dynamic nilai) {
-  if (nilai == null) {
-    return 0;
-  }
-
-  try {
-    return double.parse(nilai.toString()).toInt();
-  } catch (error) {
-    return 0;
-  }
-}
-
-// Mengubah nama hari lengkap menjadi singkatan 3 huruf untuk sumbu grafik
-String singkatHari(String hari) {
-  if (hari == 'Senin') return 'Sen';
-  if (hari == 'Selasa') return 'Sel';
-  if (hari == 'Rabu') return 'Rab';
-  if (hari == 'Kamis') return 'Kam';
-  if (hari == 'Jumat') return 'Jum';
-  if (hari == 'Sabtu') return 'Sab';
-  if (hari == 'Minggu') return 'Min';
-  return hari;
-}
-
 // Tinggi batang 4-100 px. Batang nol tetap 4 px supaya harinya kelihatan
 // walaupun tidak ada penjualan.
 double tinggiBatang(int jumlah, int maksimal) {
@@ -264,7 +225,7 @@ class KartuPenjualanProduk extends StatelessWidget {
         }
 
         for (var hari in produk['harian']) {
-          int jumlah = ambilJumlah(hari['jumlah']);
+          int jumlah = bacaAngkaDesimal(hari['jumlah']);
 
           if (jumlah > nilaiMaksimal) {
             nilaiMaksimal = jumlah;
@@ -362,7 +323,7 @@ class KartuPenjualanProduk extends StatelessWidget {
 
   Widget buildProduk(Map<String, dynamic> produk, int maksimal) {
     List harian = produk['harian'] is List ? produk['harian'] : [];
-    int total = ambilJumlah(produk['total']);
+    int total = bacaAngkaDesimal(produk['total']);
 
     return Padding(
       padding: const EdgeInsets.only(top: 12),
@@ -408,7 +369,7 @@ class KartuPenjualanProduk extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            '${ambilJumlah(hari['jumlah'])}',
+                            '${bacaAngkaDesimal(hari['jumlah'])}',
                             style: GoogleFonts.poppins(
                               fontSize: 9,
                               fontWeight: FontWeight.w600,
@@ -419,7 +380,7 @@ class KartuPenjualanProduk extends StatelessWidget {
                           Container(
                             width: 14,
                             height: tinggiBatang(
-                              ambilJumlah(hari['jumlah']),
+                              bacaAngkaDesimal(hari['jumlah']),
                               maksimal,
                             ),
                             decoration: BoxDecoration(

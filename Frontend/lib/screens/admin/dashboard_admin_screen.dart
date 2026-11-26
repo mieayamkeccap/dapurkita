@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../services/api_service.dart';
+import '../../utils/format.dart';
 import '../../widgets/app_style.dart';
 import '../../widgets/responsive.dart';
 import '../auth/login_screen.dart';
@@ -584,18 +585,6 @@ class _DashboardAdminScreenState extends State<DashboardAdminScreen> {
         ],
       ),
     );
-  }
-
-  // Mengubah nama hari lengkap menjadi singkatan 3 huruf untuk sumbu grafik
-  String singkatHari(String hari) {
-    if (hari == 'Senin') return 'Sen';
-    if (hari == 'Selasa') return 'Sel';
-    if (hari == 'Rabu') return 'Rab';
-    if (hari == 'Kamis') return 'Kam';
-    if (hari == 'Jumat') return 'Jum';
-    if (hari == 'Sabtu') return 'Sab';
-    if (hari == 'Minggu') return 'Min';
-    return hari;
   }
 
   Widget buildPesananTerbaru() {

@@ -17,6 +17,6 @@ Untuk versi web, pilih Chrome saat menjalankan. Aplikasi akan terhubung ke backe
 - `lib/models/` — model data (produk, pesanan, kategori)
 - `lib/screens/` — layar per peran (admin & customer)
 - `lib/services/` — komunikasi ke API & penyimpanan lokal
-- `test/` — pengujian Flutter
+- `lib/utils/` — helper bersama (format angka & nama hari)
 
 Lihat juga: [README utama](../README.md) · [Backend](../Backend/README.md)

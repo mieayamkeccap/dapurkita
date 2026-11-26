@@ -1,4 +1,6 @@
 
+import '../utils/format.dart';
+
 class OrderItemModel {
   final int productId;
   final String productName;
@@ -21,18 +23,8 @@ class OrderItemModel {
           ? ''
           : json['product_name'].toString(),
       quantity: int.parse(json['quantity'].toString()),
-      price: bacaAngka(json['price']),
-      subtotal: bacaAngka(json['subtotal']),
+      price: bacaAngkaDesimal(json['price']),
+      subtotal: bacaAngkaDesimal(json['subtotal']),
     );
-  }
-
-  // Harga dari MySQL DECIMAL datang sebagai "24000.00", jadi dibaca sebagai
-  // double dulu sebelum dijadikan int.
-  static int bacaAngka(dynamic nilai) {
-    try {
-      return double.parse(nilai.toString()).toInt();
-    } catch (error) {
-      return 0;
-    }
   }
 }

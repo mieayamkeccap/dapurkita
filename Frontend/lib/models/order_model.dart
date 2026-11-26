@@ -1,4 +1,5 @@
 
+import '../utils/format.dart';
 import 'order_item_model.dart';
 
 class OrderModel {
@@ -31,17 +32,6 @@ class OrderModel {
   // Data pesanan dari server menjadi OrderModel
   // (items hanya ada kalau server mengirimkannya)
   factory OrderModel.fromJson(Map<String, dynamic> json) {
-    int total = 0;
-
-    try {
-      // Total dari MySQL DECIMAL datang sebagai "29000.00", jadi dibaca
-      // sebagai double dulu sebelum dijadikan int. int.parse akan gagal
-      // dan total jadi 0 kalau langsung dibaca.
-      total = double.parse(json['total_amount'].toString()).toInt();
-    } catch (error) {
-      total = 0;
-    }
-
     List<OrderItemModel> daftarItem = [];
 
     if (json['items'] is List) {
@@ -64,7 +54,7 @@ class OrderModel {
       paymentStatus: json['payment_status'] == null
           ? ''
           : json['payment_status'].toString(),
-      totalAmount: total,
+      totalAmount: bacaAngkaDesimal(json['total_amount']),
       createdAt: json['created_at'] == null
           ? ''
           : json['created_at'].toString(),

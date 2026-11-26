@@ -20,7 +20,6 @@ const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
-const testRoutes = require('./routes/testRoutes');
 
 // Menggunakan routes
 app.use('/api/auth', authRoutes);
@@ -29,9 +28,6 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/dashboard', dashboardRoutes);
-
-// Route demonstrasi otorisasi (dipakai saat presentasi)
-app.use('/api/test', testRoutes);
 
 // Halaman utama
 app.get('/', (req, res) => {

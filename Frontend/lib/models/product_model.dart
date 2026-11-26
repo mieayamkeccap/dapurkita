@@ -1,4 +1,6 @@
 
+import '../utils/format.dart';
+
 class ProductModel {
   final int id;
   final int categoryId;
@@ -22,16 +24,6 @@ class ProductModel {
 
   // Mengubah data dari server (JSON) menjadi ProductModel
   factory ProductModel.fromJson(Map<String, dynamic> json) {
-    int harga = 0;
-
-    try {
-      // Harga dari MySQL DECIMAL datang sebagai "25000.00", jadi dibaca
-      // sebagai double dulu sebelum dijadikan int.
-      harga = double.parse(json['price'].toString()).toInt();
-    } catch (error) {
-      harga = 0;
-    }
-
     int kategori = 0;
 
     try {
@@ -57,7 +49,7 @@ class ProductModel {
       description: json['description'] == null
           ? ''
           : json['description'].toString(),
-      price: harga,
+      price: bacaAngkaDesimal(json['price']),
       imageUrl: json['image_url'] == null ? '' : json['image_url'].toString(),
       isAvailable: tersedia,
     );
