@@ -20,6 +20,8 @@ const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
+const addressRoutes = require('./routes/addressRoutes');
+const favoriteRoutes = require('./routes/favoriteRoutes');
 
 // Menggunakan routes
 app.use('/api/auth', authRoutes);
@@ -28,6 +30,8 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/addresses', addressRoutes);
+app.use('/api/favorites', favoriteRoutes);
 
 // Halaman utama
 app.get('/', (req, res) => {

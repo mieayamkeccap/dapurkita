@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../services/alamat_store.dart';
+import '../../models/alamat_model.dart';
 import '../../services/api_service.dart';
 import '../../services/keranjang_store.dart';
 import '../../widgets/app_style.dart';
@@ -28,7 +28,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
   bool isLoading = false;
   String metodeAmbil = 'delivery';
-  Alamat? alamatDipilih;
+  AlamatModel? alamatDipilih;
 
   // Ongkir untuk pengantaran (sesuai referensi: 25.000 + 5.000 = 30.000)
   static const int ongkir = 5000;
@@ -39,22 +39,38 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     isiDataAwal();
   }
 
-  // Isi nama, telepon, dan alamat utama dari yang tersimpan
+  // Isi nama, telepon, dan alamat utama dari yang tersimpan.
+  // Nama/telepon memakai salinan sesi supaya form langsung terisi;
+  // alamat diambil dari database (alamat utama ada di urutan pertama).
   Future<void> isiDataAwal() async {
     final preferences = await SharedPreferences.getInstance();
-    final alamat = await AlamatStore.ambilUtama();
+
+    String nama = preferences.getString('name') ?? '';
+    String telepon = preferences.getString('phone') ?? '';
+    AlamatModel? alamat;
+
+    try {
+      final daftar = await ApiService.getAddresses();
+
+      if (daftar.isNotEmpty) {
+        alamat = daftar.first;
+      }
+    } catch (error) {
+      // Alamat gagal dimuat: biarkan kosong, pengguna bisa memilih manual
+      // lewat halaman Pilih Alamat.
+    }
 
     if (!mounted) return;
 
     setState(() {
-      namaController.text = preferences.getString('name') ?? '';
-      teleponController.text = preferences.getString('phone') ?? '';
+      namaController.text = nama;
+      teleponController.text = telepon;
       alamatDipilih = alamat;
     });
   }
 
   Future<void> pilihAlamat() async {
-    final hasil = await Navigator.push<Alamat>(
+    final hasil = await Navigator.push<AlamatModel>(
       context,
       MaterialPageRoute(
         builder: (context) => const AlamatScreen(modePilih: true),

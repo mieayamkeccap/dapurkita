@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../models/product_model.dart';
 import '../../services/api_service.dart';
-import '../../services/favorit_store.dart';
 import '../../widgets/app_style.dart';
 import '../../widgets/responsive.dart';
 import 'beranda_screen.dart';
@@ -34,11 +33,10 @@ class _FavoritScreenState extends State<FavoritScreen> {
       errorMessage = '';
     });
     try {
-      final ids = await FavoritStore.ambilIds();
-      final products = await ApiService.getProducts();
+      final products = await ApiService.getFavorites();
       if (!mounted) return;
       setState(() {
-        favorites = products.where((p) => ids.contains(p.id)).toList();
+        favorites = products;
         isLoading = false;
       });
     } catch (error) {

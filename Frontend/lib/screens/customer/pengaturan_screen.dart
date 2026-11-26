@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../services/api_service.dart';
 import '../../services/pengaturan_store.dart';
 import '../../widgets/app_style.dart';
 import '../../widgets/responsive.dart';
@@ -27,13 +28,33 @@ class _PengaturanScreenState extends State<PengaturanScreen> {
     loadData();
   }
 
+  // Nama dan telepon dibaca dari database. Salinan di perangkat ikut
+  // diperbarui supaya header dan checkout tetap terisi saat jaringan lambat.
   Future<void> loadData() async {
     final preferences = await SharedPreferences.getInstance();
     final notif = await PengaturanStore.ambilNotifikasi();
+
+    String nama = preferences.getString('name') ?? '';
+    String telepon = preferences.getString('phone') ?? '';
+
+    try {
+      final profil = await ApiService.getProfil();
+
+      nama = profil['name'] == null ? '' : profil['name'].toString();
+      telepon = profil['phone'] == null ? '' : profil['phone'].toString();
+
+      await preferences.setString('name', nama);
+      await preferences.setString('phone', telepon);
+    } catch (error) {
+      // Server tidak bisa dihubungi: tetap tampilkan salinan terakhir
+      // supaya form tidak kosong. Gagal menyimpan tetap dilaporkan.
+    }
+
     if (!mounted) return;
+
     setState(() {
-      namaController.text = preferences.getString('name') ?? '';
-      teleponController.text = preferences.getString('phone') ?? '';
+      namaController.text = nama;
+      teleponController.text = telepon;
       notifikasi = notif;
     });
   }
@@ -43,13 +64,42 @@ class _PengaturanScreenState extends State<PengaturanScreen> {
       tampilkanPesan(context, 'Nama wajib diisi');
       return;
     }
+
     setState(() => isLoading = true);
-    final preferences = await SharedPreferences.getInstance();
-    await preferences.setString('name', namaController.text.trim());
-    await preferences.setString('phone', teleponController.text.trim());
-    if (!mounted) return;
-    setState(() => isLoading = false);
-    tampilkanPesan(context, 'Profil tersimpan');
+
+    try {
+      final profil = await ApiService.updateProfil(
+        namaController.text.trim(),
+        teleponController.text.trim(),
+      );
+
+      final preferences = await SharedPreferences.getInstance();
+      final namaBaru = profil['name'] == null
+          ? namaController.text.trim()
+          : profil['name'].toString();
+      final teleponBaru = profil['phone'] == null
+          ? ''
+          : profil['phone'].toString();
+
+      await preferences.setString('name', namaBaru);
+      await preferences.setString('phone', teleponBaru);
+
+      if (!mounted) return;
+
+      namaController.text = namaBaru;
+      teleponController.text = teleponBaru;
+
+      tampilkanPesan(context, 'Profil tersimpan');
+    } catch (error) {
+      if (!mounted) return;
+
+      String pesan = error.toString().replaceFirst('Exception: ', '');
+      tampilkanPesan(context, pesan);
+    } finally {
+      if (mounted) {
+        setState(() => isLoading = false);
+      }
+    }
   }
 
   @override

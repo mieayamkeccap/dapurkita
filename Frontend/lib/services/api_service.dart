@@ -12,6 +12,7 @@ import '../screens/auth/login_screen.dart';
 import '../models/product_model.dart';
 import '../models/category_model.dart';
 import '../models/order_model.dart';
+import '../models/alamat_model.dart';
 
 class ApiService {
   // ---------------------------------------------------------
@@ -733,6 +734,262 @@ class ApiService {
     Map<String, dynamic> body = bacaJson(response);
 
     cekBerhasil(response, body, 'Gagal memproses pembayaran');
+  }
+
+  // ---------------------------------------------------------
+  // CUSTOMER: PROFIL, ALAMAT, DAN FAVORIT
+  // Ketiganya tersimpan di database, bukan di perangkat, supaya
+  // datanya tetap ada walaupun pengguna berganti browser.
+  // ---------------------------------------------------------
+
+  // Profil milik user yang sedang login
+  static Future<Map<String, dynamic>> getProfil() async {
+    http.Response response;
+
+    try {
+      response = await http.get(
+        Uri.parse(ApiConfig.profile),
+        headers: await headerLogin(),
+      );
+    } catch (error) {
+      throw Exception('Tidak bisa terhubung ke server');
+    }
+
+    Map<String, dynamic> body = bacaJson(response);
+
+    cekBerhasil(response, body, 'Gagal mengambil data profil');
+
+    if (body['data'] == null) {
+      throw Exception('Data profil tidak valid');
+    }
+
+    return body['data'];
+  }
+
+  // Mengubah nama dan telepon. Email tidak diubah karena dipakai untuk login.
+  static Future<Map<String, dynamic>> updateProfil(
+    String name,
+    String phone,
+  ) async {
+    http.Response response;
+
+    try {
+      response = await http.put(
+        Uri.parse(ApiConfig.profile),
+        headers: await headerLogin(),
+        body: jsonEncode({
+          'name': name,
+          'phone': phone,
+        }),
+      );
+    } catch (error) {
+      throw Exception('Tidak bisa terhubung ke server');
+    }
+
+    Map<String, dynamic> body = bacaJson(response);
+
+    cekBerhasil(response, body, 'Gagal menyimpan profil');
+
+    if (body['data'] == null) {
+      return {};
+    }
+
+    return body['data'];
+  }
+
+  // Alamat milik customer, alamat utama selalu di urutan pertama
+  static Future<List<AlamatModel>> getAddresses() async {
+    http.Response response;
+
+    try {
+      response = await http.get(
+        Uri.parse(ApiConfig.addresses),
+        headers: await headerLogin(),
+      );
+    } catch (error) {
+      throw Exception('Tidak bisa terhubung ke server');
+    }
+
+    Map<String, dynamic> body = bacaJson(response);
+
+    cekBerhasil(response, body, 'Gagal mengambil data alamat');
+
+    if (body['data'] is! List) {
+      throw Exception('Data alamat tidak valid');
+    }
+
+    List<AlamatModel> daftar = [];
+
+    for (var item in body['data']) {
+      daftar.add(AlamatModel.fromJson(item));
+    }
+
+    return daftar;
+  }
+
+  // addressId 0 = tambah alamat baru, selain itu = ubah alamat lama
+  static Future<void> simpanAlamat({
+    required int addressId,
+    required String label,
+    required String address,
+  }) async {
+    http.Response response;
+
+    try {
+      if (addressId == 0) {
+        response = await http.post(
+          Uri.parse(ApiConfig.addresses),
+          headers: await headerLogin(),
+          body: jsonEncode({
+            'label': label,
+            'address': address,
+          }),
+        );
+      } else {
+        response = await http.put(
+          Uri.parse('${ApiConfig.addresses}/$addressId'),
+          headers: await headerLogin(),
+          body: jsonEncode({
+            'label': label,
+            'address': address,
+          }),
+        );
+      }
+    } catch (error) {
+      throw Exception('Tidak bisa terhubung ke server');
+    }
+
+    Map<String, dynamic> body = bacaJson(response);
+
+    cekBerhasil(response, body, 'Gagal menyimpan alamat');
+  }
+
+  static Future<void> hapusAlamat(int addressId) async {
+    http.Response response;
+
+    try {
+      response = await http.delete(
+        Uri.parse('${ApiConfig.addresses}/$addressId'),
+        headers: await headerLogin(),
+      );
+    } catch (error) {
+      throw Exception('Tidak bisa terhubung ke server');
+    }
+
+    Map<String, dynamic> body = bacaJson(response);
+
+    cekBerhasil(response, body, 'Gagal menghapus alamat');
+  }
+
+  static Future<void> setAlamatUtama(int addressId) async {
+    http.Response response;
+
+    try {
+      response = await http.put(
+        Uri.parse('${ApiConfig.addresses}/$addressId/utama'),
+        headers: await headerLogin(),
+      );
+    } catch (error) {
+      throw Exception('Tidak bisa terhubung ke server');
+    }
+
+    Map<String, dynamic> body = bacaJson(response);
+
+    cekBerhasil(response, body, 'Gagal mengatur alamat utama');
+  }
+
+  // Produk favorit lengkap dengan nama kategorinya
+  static Future<List<ProductModel>> getFavorites() async {
+    http.Response response;
+
+    try {
+      response = await http.get(
+        Uri.parse(ApiConfig.favorites),
+        headers: await headerLogin(),
+      );
+    } catch (error) {
+      throw Exception('Tidak bisa terhubung ke server');
+    }
+
+    Map<String, dynamic> body = bacaJson(response);
+
+    cekBerhasil(response, body, 'Gagal mengambil data favorit');
+
+    if (body['data'] is! List) {
+      throw Exception('Data favorit tidak valid');
+    }
+
+    List<ProductModel> daftar = [];
+
+    for (var item in body['data']) {
+      daftar.add(ProductModel.fromJson(item));
+    }
+
+    return daftar;
+  }
+
+  // Hanya id produk favorit, dipakai ikon hati di detail produk
+  static Future<List<int>> getFavoriteIds() async {
+    http.Response response;
+
+    try {
+      response = await http.get(
+        Uri.parse(ApiConfig.favoriteIds),
+        headers: await headerLogin(),
+      );
+    } catch (error) {
+      throw Exception('Tidak bisa terhubung ke server');
+    }
+
+    Map<String, dynamic> body = bacaJson(response);
+
+    cekBerhasil(response, body, 'Gagal mengambil id favorit');
+
+    List<int> hasil = [];
+
+    if (body['data'] is List) {
+      for (var item in body['data']) {
+        int id = int.tryParse(item.toString()) ?? 0;
+
+        if (id != 0) hasil.add(id);
+      }
+    }
+
+    return hasil;
+  }
+
+  static Future<void> tambahFavorit(int productId) async {
+    http.Response response;
+
+    try {
+      response = await http.post(
+        Uri.parse('${ApiConfig.favorites}/$productId'),
+        headers: await headerLogin(),
+      );
+    } catch (error) {
+      throw Exception('Tidak bisa terhubung ke server');
+    }
+
+    Map<String, dynamic> body = bacaJson(response);
+
+    cekBerhasil(response, body, 'Gagal menambahkan favorit');
+  }
+
+  static Future<void> hapusFavorit(int productId) async {
+    http.Response response;
+
+    try {
+      response = await http.delete(
+        Uri.parse('${ApiConfig.favorites}/$productId'),
+        headers: await headerLogin(),
+      );
+    } catch (error) {
+      throw Exception('Tidak bisa terhubung ke server');
+    }
+
+    Map<String, dynamic> body = bacaJson(response);
+
+    cekBerhasil(response, body, 'Gagal menghapus favorit');
   }
 }
 

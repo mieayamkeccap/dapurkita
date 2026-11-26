@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../models/product_model.dart';
-import '../../services/favorit_store.dart';
+import '../../services/api_service.dart';
 import '../../services/keranjang_store.dart';
 import '../../widgets/app_style.dart';
 import '../../widgets/responsive.dart';
@@ -30,19 +30,47 @@ class _ProdukDetailScreenState extends State<ProdukDetailScreen> {
   }
 
   Future<void> loadFavorite() async {
-    final favorit = await FavoritStore.adalah(widget.product.id);
-    if (!mounted) return;
-    setState(() => isFavorite = favorit);
+    try {
+      final ids = await ApiService.getFavoriteIds();
+
+      if (!mounted) return;
+
+      setState(() => isFavorite = ids.contains(widget.product.id));
+    } catch (error) {
+      // Gagal memuat favorit tidak boleh mengganggu halaman produk.
+      if (!mounted) return;
+      setState(() => isFavorite = false);
+    }
   }
 
   Future<void> toggleFavorite() async {
-    final baru = await FavoritStore.toggle(widget.product.id);
-    if (!mounted) return;
-    setState(() => isFavorite = baru);
-    tampilkanPesan(
-      context,
-      baru ? 'Ditambah ke favorit' : 'Dihapus dari favorit',
-    );
+    final sebelumnya = isFavorite;
+
+    // Tampilan diubah dulu supaya ikon hati langsung merespons ketukan.
+    setState(() => isFavorite = !sebelumnya);
+
+    try {
+      if (sebelumnya) {
+        await ApiService.hapusFavorit(widget.product.id);
+      } else {
+        await ApiService.tambahFavorit(widget.product.id);
+      }
+
+      if (!mounted) return;
+
+      tampilkanPesan(
+        context,
+        sebelumnya ? 'Dihapus dari favorit' : 'Ditambah ke favorit',
+      );
+    } catch (error) {
+      if (!mounted) return;
+
+      // Gagal di server: kembalikan ikon ke keadaan sebenarnya.
+      setState(() => isFavorite = sebelumnya);
+
+      String pesan = error.toString().replaceFirst('Exception: ', '');
+      tampilkanPesan(context, pesan);
+    }
   }
 
   void kurangiJumlah() {

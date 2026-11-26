@@ -145,7 +145,89 @@ const login = async (req, res) => {
 };
 
 
+// PROFIL SENDIRI
+// Dipakai halaman Pengaturan supaya nama dan telepon dibaca dari database,
+// bukan dari salinan di perangkat.
+const getProfile = async (req, res) => {
+    try {
+        const [users] = await db.promise().query(
+            `SELECT id, name, email, phone, role, created_at
+             FROM users
+             WHERE id = ?`,
+            [req.user.id]
+        );
+
+        if (users.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: 'Pengguna tidak ditemukan'
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            data: users[0]
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Gagal mengambil data profil'
+        });
+    }
+};
+
+// UBAH PROFIL
+// Hanya nama dan telepon. Email tidak diubah karena dipakai untuk login dan
+// punya aturan UNIQUE di database.
+const updateProfile = async (req, res) => {
+    try {
+        const { name, phone } = req.body;
+
+        if (!name || !String(name).trim()) {
+            return res.status(400).json({
+                success: false,
+                message: 'Nama wajib diisi'
+            });
+        }
+
+        const [result] = await db.promise().query(
+            'UPDATE users SET name = ?, phone = ? WHERE id = ?',
+            [String(name).trim(), phone ? String(phone).trim() : null, req.user.id]
+        );
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({
+                success: false,
+                message: 'Pengguna tidak ditemukan'
+            });
+        }
+
+        const [users] = await db.promise().query(
+            `SELECT id, name, email, phone, role
+             FROM users
+             WHERE id = ?`,
+            [req.user.id]
+        );
+
+        res.status(200).json({
+            success: true,
+            message: 'Profil berhasil diperbarui',
+            data: users[0]
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Gagal memperbarui profil'
+        });
+    }
+};
+
+
 module.exports = {
     register,
-    login
+    login,
+    getProfile,
+    updateProfile
 };

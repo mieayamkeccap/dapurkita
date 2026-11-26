@@ -10,6 +10,7 @@ Fitur utama:
 - Dashboard admin: ringkasan pendapatan, produk terlaris, pesanan harian, dan laporan
 - Halaman Pesanan admin menampilkan isi tiap pesanan (produk & jumlahnya) sebelum status diubah
 - Laporan admin punya grafik penjualan per produk, dikelompokkan per kategori, untuk 7 hari terakhir
+- Profil (nama & telepon), daftar alamat pengiriman, dan produk favorit tersimpan di database, jadi tetap ada walaupun pengguna berganti browser atau perangkat
 
 ## Struktur Folder
 

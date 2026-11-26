@@ -14,8 +14,10 @@ npm run dev            # jalan di http://localhost:8000
 
 Semua endpoint diawali `/api`:
 
-- `POST /auth/login`, `POST /auth/register`
+- `POST /auth/login`, `POST /auth/register`, `GET /auth/profile`, `PUT /auth/profile`
 - `GET /products`, `POST /products` (admin, upload foto), `GET /categories`
+- `GET /addresses`, `POST /addresses`, `PUT /addresses/:id`, `PUT /addresses/:id/utama`, `DELETE /addresses/:id` (customer)
+- `GET /favorites`, `GET /favorites/ids`, `POST /favorites/:productId`, `DELETE /favorites/:productId` (customer)
 - `POST /orders`, `GET /orders/my-orders`, `PUT /orders/:id/status` (admin), `PUT /orders/:id/selesai` (customer)
 - `GET /dashboard/summary`, `/dashboard/top-products`, `/dashboard/daily-orders`, `/dashboard/product-sales` (admin)
 - `GET /payments`
