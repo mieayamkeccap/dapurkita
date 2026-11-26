@@ -7,7 +7,7 @@ Fitur utama:
 - Katalog produk & kategori, keranjang, checkout, dan pelacakan status pesanan
 - Pembayaran transfer (langsung lunas) dengan ongkir flat Rp5.000
 - Upload foto produk lewat backend ke Cloudinary
-- Dashboard admin: ringkasan pendapatan, produk terlaris, pesanan harian, stok rendah, dan laporan
+- Dashboard admin: ringkasan pendapatan, produk terlaris, pesanan harian, dan laporan
 
 ## Struktur Folder
 
@@ -52,7 +52,4 @@ flutter run            # pilih Chrome untuk versi web
 | Admin | admin@gmail.com | (sesuai data di database lokal) |
 | Customer | eros@gmail.com | (sesuai data di database lokal) |
 
-## Dokumen Terkait
 
-- Skema database: `Backend/erd/dapurkita_db.sql`
-- ERD: `Backend/erd/ERD_DapurKita.drawio`

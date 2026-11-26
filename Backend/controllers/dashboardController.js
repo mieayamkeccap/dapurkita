@@ -120,35 +120,6 @@ const getDailyOrders = async (req, res) => {
     }
 };
 
-// Mengambil bahan yang stoknya menipis
-const getLowStock = async (req, res) => {
-    try {
-        const [ingredients] = await db.promise().query(`
-            SELECT
-                id,
-                name,
-                unit,
-                stock,
-                minimum_stock
-            FROM ingredients
-            WHERE stock <= minimum_stock
-            ORDER BY stock ASC
-        `);
-
-        res.status(200).json({
-            success: true,
-            message: 'Data stok menipis berhasil diambil',
-            data: ingredients
-        });
-
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: 'Gagal mengambil data stok'
-        });
-    }
-};
-
 // Mengambil produk paling banyak dipesan
 const getTopProducts = async (req, res) => {
     try {
@@ -182,6 +153,5 @@ const getTopProducts = async (req, res) => {
 module.exports = {
     getSummary,
     getDailyOrders,
-    getLowStock,
     getTopProducts
 };

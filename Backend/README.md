@@ -18,7 +18,7 @@ Semua endpoint diawali `/api`:
 - `GET /products`, `POST /products` (admin, upload foto), `GET /categories`
 - `POST /orders`, `GET /orders/my-orders`, `PUT /orders/:id/status` (admin), `PUT /orders/:id/selesai` (customer)
 - `GET /dashboard/summary`, `/dashboard/top-products`, `/dashboard/daily-orders` (admin)
-- `GET /payments`, `/ingredients`, `/purchases`, `/expenses`
+- `GET /payments`
 
 ## Variabel lingkungan
 

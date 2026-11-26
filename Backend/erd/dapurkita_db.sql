@@ -8,60 +8,6 @@ CREATE TABLE `categories` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `expenses` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `purchase_id` int DEFAULT NULL,
-  `title` varchar(150) NOT NULL,
-  `category` varchar(100) NOT NULL,
-  `amount` decimal(12,2) NOT NULL,
-  `description` text,
-  `expense_date` date NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `purchase_id` (`purchase_id`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `expenses_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `expenses_ibfk_2` FOREIGN KEY (`purchase_id`) REFERENCES `ingredient_purchases` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `ingredient_purchase_items` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `purchase_id` int NOT NULL,
-  `ingredient_id` int NOT NULL,
-  `quantity` decimal(12,2) NOT NULL,
-  `unit_cost` decimal(12,2) NOT NULL,
-  `subtotal` decimal(12,2) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `purchase_id` (`purchase_id`),
-  KEY `ingredient_id` (`ingredient_id`),
-  CONSTRAINT `ingredient_purchase_items_ibfk_1` FOREIGN KEY (`purchase_id`) REFERENCES `ingredient_purchases` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `ingredient_purchase_items_ibfk_2` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `ingredient_purchases` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `supplier_name` varchar(150) DEFAULT NULL,
-  `purchase_date` date NOT NULL,
-  `total_amount` decimal(12,2) NOT NULL DEFAULT '0.00',
-  `notes` text,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `ingredient_purchases_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `ingredients` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `unit` varchar(30) NOT NULL,
-  `stock` decimal(12,2) NOT NULL DEFAULT '0.00',
-  `minimum_stock` decimal(12,2) NOT NULL DEFAULT '0.00',
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 CREATE TABLE `order_items` (
   `id` int NOT NULL AUTO_INCREMENT,
   `order_id` int NOT NULL,
@@ -92,7 +38,6 @@ CREATE TABLE `orders` (
   `delivery_fee` decimal(12,2) NOT NULL DEFAULT '0.00',
   `total_amount` decimal(12,2) NOT NULL,
   `order_status` enum('pending','confirmed','preparing','ready','on_delivery','completed','cancelled') NOT NULL DEFAULT 'pending',
-  `stock_deducted_at` datetime DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `order_code` (`order_code`),

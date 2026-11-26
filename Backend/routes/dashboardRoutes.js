@@ -5,7 +5,6 @@ const router = express.Router();
 const {
     getSummary,
     getDailyOrders,
-    getLowStock,
     getTopProducts
 } = require('../controllers/dashboardController');
 
@@ -18,7 +17,6 @@ router.use(roleMiddleware('admin'));
 
 router.get('/summary', getSummary);
 router.get('/daily-orders', getDailyOrders);
-router.get('/low-stock', getLowStock);
 router.get('/top-products', getTopProducts);
 
 module.exports = router;
