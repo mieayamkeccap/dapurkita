@@ -1,0 +1,4 @@
+# Netlify: aplikasi Flutter web hanya punya satu halaman (index.html).
+# Tanpa aturan ini, membuka alamat selain "/" atau menekan refresh di tengah
+# aplikasi akan menghasilkan 404, bukan aplikasinya.
+/*  /index.html  200

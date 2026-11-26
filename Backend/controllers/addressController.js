@@ -146,7 +146,8 @@ const deleteAddress = async (req, res) => {
     try {
         const { id } = req.params;
 
-        connection = db.promise();
+        // Koneksi diambil dari pool dan dilepas lagi di blok finally.
+        connection = await db.promise().getConnection();
         await connection.beginTransaction();
 
         const [addresses] = await connection.query(
@@ -203,6 +204,8 @@ const deleteAddress = async (req, res) => {
             success: false,
             message: 'Gagal menghapus alamat'
         });
+    } finally {
+        if (connection) connection.release();
     }
 };
 
@@ -215,7 +218,8 @@ const setPrimaryAddress = async (req, res) => {
     try {
         const { id } = req.params;
 
-        connection = db.promise();
+        // Koneksi diambil dari pool dan dilepas lagi di blok finally.
+        connection = await db.promise().getConnection();
         await connection.beginTransaction();
 
         const [addresses] = await connection.query(
@@ -258,6 +262,8 @@ const setPrimaryAddress = async (req, res) => {
             success: false,
             message: 'Gagal mengatur alamat utama'
         });
+    } finally {
+        if (connection) connection.release();
     }
 };
 

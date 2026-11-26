@@ -7,10 +7,14 @@ const ONGKIR = 5000;
 
 // MEMBUAT PESANAN CUSTOMER
 const createOrder = async (req, res) => {
-    const connection = db.promise();
+    // Koneksi diambil dari pool, bukan dipinjam bersama semua request.
+    // Tanpa ini, dua customer yang checkout bersamaan akan memakai koneksi
+    // yang sama dan commit/rollback salah satunya menutup transaksi yang lain.
+    let connection;
     let transactionStarted = false;
 
     try {
+        connection = await db.promise().getConnection();
         const {
             items,
             delivery_method,
@@ -226,6 +230,10 @@ const createOrder = async (req, res) => {
             success: false,
             message: error.message || 'Gagal membuat pesanan'
         });
+    } finally {
+        // Wajib: koneksi harus dikembalikan ke pool, kalau tidak pool habis
+        // dan seluruh API berhenti melayani setelah 5 request.
+        if (connection) connection.release();
     }
 };
 
@@ -377,10 +385,11 @@ const getOrderById = async (req, res) => {
 
 // UPDATE STATUS PESANAN ADMIN
 const updateOrderStatus = async (req, res) => {
-    const connection = db.promise();
+    let connection;
     let transactionStarted = false;
 
     try {
+        connection = await db.promise().getConnection();
         const { id } = req.params;
         const { order_status } = req.body;
 
@@ -497,6 +506,8 @@ const updateOrderStatus = async (req, res) => {
             success: false,
             message: error.message || 'Gagal memperbarui status pesanan'
         });
+    } finally {
+        if (connection) connection.release();
     }
 };
 
@@ -505,10 +516,11 @@ const updateOrderStatus = async (req, res) => {
 // Dipisah dari updateOrderStatus supaya aturan admin tidak berubah dan
 // customer hanya bisa menyelesaikan pesanannya sendiri.
 const completeOrderByCustomer = async (req, res) => {
-    const connection = db.promise();
+    let connection;
     let transactionStarted = false;
 
     try {
+        connection = await db.promise().getConnection();
         const { id } = req.params;
 
         await connection.beginTransaction();
@@ -586,6 +598,8 @@ const completeOrderByCustomer = async (req, res) => {
             success: false,
             message: error.message || 'Gagal menandai pesanan selesai'
         });
+    } finally {
+        if (connection) connection.release();
     }
 };
 
