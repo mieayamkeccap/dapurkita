@@ -202,7 +202,6 @@ double tinggiBatang(int jumlah, int maksimal) {
 // Grafik penjualan per produk, dikelompokkan per kategori.
 // Setiap produk punya grafik 7 hari sendiri, termasuk produk yang belum
 // pernah terjual (batangnya nol), supaya menu baru langsung terlihat.
-// Dibuat top-level supaya bisa dirender sendiri di widget test.
 class KartuPenjualanProduk extends StatelessWidget {
   final List<Map<String, dynamic>> data;
 

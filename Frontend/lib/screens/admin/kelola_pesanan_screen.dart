@@ -421,7 +421,6 @@ Future<bool> konfirmasiPesananSelesai(
 }
 
 // Isi pesanan: nama produk, jumlahnya, dan subtotal per baris.
-// Dibuat top-level supaya bisa dirender sendiri di widget test.
 class DaftarItemPesanan extends StatelessWidget {
   final List<OrderItemModel> items;
 
