@@ -30,6 +30,7 @@ coverage/
 .vscode/
 .DS_Store
 Thumbs.db
+~$*
 
 # ===== Tool lokal (tidak untuk repo) =====
 .vibecode/
