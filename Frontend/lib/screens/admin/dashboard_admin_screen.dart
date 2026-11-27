@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -301,8 +300,12 @@ class _DashboardAdminScreenState extends State<DashboardAdminScreen> {
             Expanded(
               child: Text(
                 judul,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: GoogleFonts.poppins(
-                  fontSize: 20,
+                  // Judul 20 kepotong di HP 320 bareng nama admin,
+                  // jadi mengecil mengikuti lebar layar.
+                  fontSize: layarSempit ? 18 : 20,
                   fontWeight: FontWeight.w700,
                   color: AppStyle.hijauTua,
                   letterSpacing: -0.5,
@@ -315,12 +318,16 @@ class _DashboardAdminScreenState extends State<DashboardAdminScreen> {
               size: 28,
             ),
             const SizedBox(width: 8),
-            Text(
-              namaAdmin,
-              style: GoogleFonts.poppins(
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                color: AppStyle.hijauTua,
+            Flexible(
+              child: Text(
+                namaAdmin,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: AppStyle.hijauTua,
+                ),
               ),
             ),
           ],
@@ -377,10 +384,7 @@ class _DashboardAdminScreenState extends State<DashboardAdminScreen> {
               ),
               child: Text(
                 errorMessage,
-                style: GoogleFonts.poppins(
-                  fontSize: 12,
-                  color: AppStyle.merah,
-                ),
+                style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.merah),
               ),
             ),
           buildBarisKartu(),
@@ -533,10 +537,7 @@ class _DashboardAdminScreenState extends State<DashboardAdminScreen> {
           if (dataHarian.isEmpty)
             Text(
               'Belum ada data grafik.',
-              style: GoogleFonts.poppins(
-                fontSize: 12,
-                color: AppStyle.abuTeks,
-              ),
+              style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.abuTeks),
             )
           else
             SizedBox(
@@ -565,11 +566,11 @@ class _DashboardAdminScreenState extends State<DashboardAdminScreen> {
                               height: nilaiMaksimal == 0
                                   ? 4
                                   : ((int.tryParse(item['jumlah'].toString()) ??
-                                              0) /
-                                          nilaiMaksimal *
-                                          100)
-                                      .clamp(4, 100)
-                                      .toDouble(),
+                                                0) /
+                                            nilaiMaksimal *
+                                            100)
+                                        .clamp(4, 100)
+                                        .toDouble(),
                               decoration: BoxDecoration(
                                 color: AppStyle.hijau,
                                 borderRadius: const BorderRadius.only(
@@ -621,10 +622,7 @@ class _DashboardAdminScreenState extends State<DashboardAdminScreen> {
           if (pesananTerbaru.isEmpty)
             Text(
               'Belum ada pesanan.',
-              style: GoogleFonts.poppins(
-                fontSize: 12,
-                color: AppStyle.abuTeks,
-              ),
+              style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.abuTeks),
             ),
           for (var pesanan in pesananTerbaru)
             Padding(
@@ -685,9 +683,7 @@ class _DashboardAdminScreenState extends State<DashboardAdminScreen> {
                       style: GoogleFonts.poppins(
                         fontSize: 9,
                         fontWeight: FontWeight.w700,
-                        color: warnaStatusPesanan(
-                          pesanan['status'].toString(),
-                        ),
+                        color: warnaStatusPesanan(pesanan['status'].toString()),
                       ),
                     ),
                   ),
@@ -699,4 +695,3 @@ class _DashboardAdminScreenState extends State<DashboardAdminScreen> {
     );
   }
 }
-

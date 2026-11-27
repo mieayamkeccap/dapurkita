@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -128,10 +127,7 @@ class _KeranjangScreenState extends State<KeranjangScreen> {
             const SizedBox(height: 4),
             Text(
               'Yuk pilih menu favoritmu di Beranda.',
-              style: GoogleFonts.poppins(
-                fontSize: 12,
-                color: AppStyle.abuTeks,
-              ),
+              style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.abuTeks),
             ),
           ],
         ),
@@ -161,12 +157,7 @@ class _KeranjangScreenState extends State<KeranjangScreen> {
     );
   }
 
-  Widget buildKartuItem(
-    int productId,
-    String nama,
-    int harga,
-    int jumlah,
-  ) {
+  Widget buildKartuItem(int productId, String nama, int harga, int jumlah) {
     // Cari produknya untuk ditampilkan gambarnya
     var item = KeranjangStore.items.firstWhere(
       (item) => item.product.id == productId,
@@ -212,12 +203,9 @@ class _KeranjangScreenState extends State<KeranjangScreen> {
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    buildTombolJumlah(
-                      Icons.remove_rounded,
-                      () {
-                        kurangi(productId);
-                      },
-                    ),
+                    buildTombolJumlah(Icons.remove_rounded, () {
+                      kurangi(productId);
+                    }),
                     SizedBox(
                       width: 32,
                       child: Text(
@@ -230,12 +218,9 @@ class _KeranjangScreenState extends State<KeranjangScreen> {
                         ),
                       ),
                     ),
-                    buildTombolJumlah(
-                      Icons.add_rounded,
-                      () {
-                        tambah(productId);
-                      },
-                    ),
+                    buildTombolJumlah(Icons.add_rounded, () {
+                      tambah(productId);
+                    }),
                   ],
                 ),
               ],
@@ -290,12 +275,21 @@ class _KeranjangScreenState extends State<KeranjangScreen> {
                 ),
               ),
               const Spacer(),
-              Text(
-                formatRupiah(KeranjangStore.totalBelanja()),
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: AppStyle.hijauTua,
+              // Alasan sama seperti total di checkout.
+              Flexible(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    formatRupiah(KeranjangStore.totalBelanja()),
+                    maxLines: 1,
+                    textAlign: TextAlign.end,
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      color: AppStyle.hijauTua,
+                    ),
+                  ),
                 ),
               ),
             ],

@@ -279,11 +279,18 @@ class _KelolaPesananScreenState extends State<KelolaPesananScreen> {
                     side: const BorderSide(color: AppStyle.hijauTua),
                     minimumSize: const Size(0, 40),
                   ),
-                  child: Text(
-                    'Ubah Status',
-                    style: GoogleFonts.poppins(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
+                  // FittedBox: dua tombol berdampingan di HP 320 sempit,
+                  // label mengecil sendiri daripada meluber.
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      'Ubah Status',
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.poppins(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
@@ -298,11 +305,17 @@ class _KelolaPesananScreenState extends State<KelolaPesananScreen> {
                     style: AppStyle.tombolUtama().copyWith(
                       minimumSize: const WidgetStatePropertyAll(Size(0, 40)),
                     ),
-                    child: Text(
-                      'Verifikasi Bayar',
-                      style: GoogleFonts.poppins(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
+                    // FittedBox: alasan sama seperti tombol di sebelahnya.
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        'Verifikasi Bayar',
+                        maxLines: 1,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),

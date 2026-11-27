@@ -60,7 +60,10 @@ class _MainScreenState extends State<MainScreen> {
         ),
         // Di layar lebar konten dibatasi 480 dan di tengah, jadi nav ikut
         // dibatasi supaya sejajar dengan isi halaman di atasnya.
+        // heightFactor 1.0 wajib: tanpa ini Center mengembang setinggi slot
+        // bottom-nav sehingga body terhimpit nol dan layar jadi putih.
         child: Center(
+          heightFactor: 1.0,
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: lebarMaksCustomer),
             child: BottomNavigationBar(

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -72,10 +71,7 @@ class _LaporanScreenState extends State<LaporanScreen> {
         if (errorMessage != '')
           Text(
             errorMessage,
-            style: GoogleFonts.poppins(
-              fontSize: 12,
-              color: AppStyle.merah,
-            ),
+            style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.merah),
           ),
         buildKartu('Total Pesanan', '$totalPesanan pesanan', AppStyle.oranye),
         const SizedBox(height: 10),
@@ -169,18 +165,26 @@ class _LaporanScreenState extends State<LaporanScreen> {
           Expanded(
             child: Text(
               judul,
-              style: GoogleFonts.poppins(
-                fontSize: 12,
-                color: AppStyle.abuTeks,
-              ),
+              style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.abuTeks),
             ),
           ),
-          Text(
-            nilai,
-            style: GoogleFonts.poppins(
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
-              color: AppStyle.hijauTua,
+          // Nilai dibatasi 140 + mengecil sendiri: nominal panjang
+          // (mis. jutaan) tidak mendorong judul sampai meluber di HP 320.
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 140),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.centerRight,
+              child: Text(
+                nilai,
+                maxLines: 1,
+                textAlign: TextAlign.end,
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: AppStyle.hijauTua,
+                ),
+              ),
             ),
           ),
         ],
@@ -268,10 +272,7 @@ class KartuPenjualanProduk extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             'Jumlah unit terjual setiap hari, dikelompokkan per kategori.',
-            style: GoogleFonts.poppins(
-              fontSize: 10,
-              color: AppStyle.abuTeks,
-            ),
+            style: GoogleFonts.poppins(fontSize: 10, color: AppStyle.abuTeks),
           ),
           if (data.isEmpty)
             Padding(
@@ -284,8 +285,7 @@ class KartuPenjualanProduk extends StatelessWidget {
                 ),
               ),
             ),
-          for (var kategori in data)
-            buildKategori(kategori, nilaiMaksimal),
+          for (var kategori in data) buildKategori(kategori, nilaiMaksimal),
         ],
       ),
     );

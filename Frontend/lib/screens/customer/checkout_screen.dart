@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -186,26 +185,26 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       ),
       body: BatasLebar(
         child: Column(
-        children: [
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(20),
-              children: [
-                buildKartuAlamat(),
-                const SizedBox(height: 14),
-                buildKartuMetodeAmbil(),
-                const SizedBox(height: 14),
-                buildKartuPembayaran(),
-                const SizedBox(height: 14),
-                buildKartuPenerima(),
-                const SizedBox(height: 14),
-                buildKartuRingkasan(),
-                const SizedBox(height: 20),
-              ],
+          children: [
+            Expanded(
+              child: ListView(
+                padding: const EdgeInsets.all(20),
+                children: [
+                  buildKartuAlamat(),
+                  const SizedBox(height: 14),
+                  buildKartuMetodeAmbil(),
+                  const SizedBox(height: 14),
+                  buildKartuPembayaran(),
+                  const SizedBox(height: 14),
+                  buildKartuPenerima(),
+                  const SizedBox(height: 14),
+                  buildKartuRingkasan(),
+                  const SizedBox(height: 20),
+                ],
+              ),
             ),
-          ),
-          buildTombolBawah(),
-        ],
+            buildTombolBawah(),
+          ],
         ),
       ),
     );
@@ -269,9 +268,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       style: GoogleFonts.poppins(
                         fontSize: 12,
                         height: 1.5,
-                        color: adaAlamat
-                            ? AppStyle.hijauTua
-                            : AppStyle.abuTeks,
+                        color: adaAlamat ? AppStyle.hijauTua : AppStyle.abuTeks,
                       ),
                     ),
                   ),
@@ -329,10 +326,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           const SizedBox(height: 8),
           Text(
             'Pembayaran dicatat lunas saat pesanan dibuat.',
-            style: GoogleFonts.poppins(
-              fontSize: 11,
-              color: AppStyle.abuTeks,
-            ),
+            style: GoogleFonts.poppins(fontSize: 11, color: AppStyle.abuTeks),
           ),
         ],
       ),
@@ -507,12 +501,21 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 ),
               ),
               const Spacer(),
-              Text(
-                formatRupiah(totalPembayaran()),
-                style: GoogleFonts.poppins(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                  color: AppStyle.hijauTua,
+              // Total mengecil sendiri kalau nominalnya panjang di HP 320.
+              Flexible(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    formatRupiah(totalPembayaran()),
+                    maxLines: 1,
+                    textAlign: TextAlign.end,
+                    style: GoogleFonts.poppins(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: AppStyle.hijauTua,
+                    ),
+                  ),
                 ),
               ),
             ],

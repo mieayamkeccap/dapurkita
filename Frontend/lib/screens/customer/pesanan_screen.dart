@@ -332,12 +332,21 @@ class _PesananScreenState extends State<PesananScreen> {
                   ),
                 ),
                 const Spacer(),
-                Text(
-                  formatRupiah(order.totalAmount),
-                  style: GoogleFonts.poppins(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                    color: AppStyle.hijauTua,
+                // Nominal panjang mengecil sendiri di HP 320.
+                Flexible(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      formatRupiah(order.totalAmount),
+                      maxLines: 1,
+                      textAlign: TextAlign.end,
+                      style: GoogleFonts.poppins(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: AppStyle.hijauTua,
+                      ),
+                    ),
                   ),
                 ),
                 const Icon(
