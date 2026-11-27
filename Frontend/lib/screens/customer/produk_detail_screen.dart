@@ -400,11 +400,15 @@ class _ProdukDetailScreenState extends State<ProdukDetailScreen> {
           onPressed: tambahKeKeranjang,
           style: AppStyle.tombolUtama(),
           icon: const Icon(Icons.shopping_cart_outlined, size: 18),
-          label: Text(
-            'Tambah ke Keranjang · ${formatRupiah(widget.product.price * jumlah)}',
-            style: GoogleFonts.poppins(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
+          label: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              'Tambah ke Keranjang · ${formatRupiah(widget.product.price * jumlah)}',
+              maxLines: 1,
+              style: GoogleFonts.poppins(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ),

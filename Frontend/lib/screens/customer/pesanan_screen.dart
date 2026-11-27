@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -260,9 +259,7 @@ class _PesananScreenState extends State<PesananScreen> {
       color: AppStyle.hijauTua,
       child: ListView(
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-        children: [
-          for (var order in daftar) buildKartuPesanan(order),
-        ],
+        children: [for (var order in daftar) buildKartuPesanan(order)],
       ),
     );
   }
@@ -320,10 +317,7 @@ class _PesananScreenState extends State<PesananScreen> {
             const SizedBox(height: 4),
             Text(
               formatTanggal(order.createdAt),
-              style: GoogleFonts.poppins(
-                fontSize: 10,
-                color: AppStyle.abuTeks,
-              ),
+              style: GoogleFonts.poppins(fontSize: 10, color: AppStyle.abuTeks),
             ),
             const SizedBox(height: 10),
             const Divider(height: 1, color: AppStyle.garis),
@@ -492,151 +486,153 @@ class _DetailPesananScreenState extends State<DetailPesananScreen> {
           ? const Center(
               child: CircularProgressIndicator(color: AppStyle.hijauTua),
             )
-          : ListView(
-              padding: const EdgeInsets.all(20),
-              children: [
-                if (errorMessage != '')
-                  Text(
-                    errorMessage,
-                    style: GoogleFonts.poppins(
-                      fontSize: 12,
-                      color: AppStyle.merah,
+          : BatasLebar(
+              child: ListView(
+                padding: const EdgeInsets.all(20),
+                children: [
+                  if (errorMessage != '')
+                    Text(
+                      errorMessage,
+                      style: GoogleFonts.poppins(
+                        fontSize: 12,
+                        color: AppStyle.merah,
+                      ),
                     ),
-                  ),
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: AppStyle.garis),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '#${pesanan.orderCode}',
-                        style: GoogleFonts.poppins(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w700,
-                          color: AppStyle.hijauTua,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        formatTanggal(pesanan.createdAt),
-                        style: GoogleFonts.poppins(
-                          fontSize: 10,
-                          color: AppStyle.abuTeks,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        'Status: ${teksStatusPesanan(pesanan.orderStatus)}',
-                        style: GoogleFonts.poppins(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: warnaStatusPesanan(pesanan.orderStatus),
-                        ),
-                      ),
-                      const SizedBox(height: 14),
-                      const Divider(height: 1, color: AppStyle.garis),
-                      const SizedBox(height: 10),
-                      if (pesanan.items.isEmpty)
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: AppStyle.garis),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                         Text(
-                          'Daftar item tidak tersedia.',
+                          '#${pesanan.orderCode}',
                           style: GoogleFonts.poppins(
-                            fontSize: 12,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700,
+                            color: AppStyle.hijauTua,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          formatTanggal(pesanan.createdAt),
+                          style: GoogleFonts.poppins(
+                            fontSize: 10,
                             color: AppStyle.abuTeks,
                           ),
                         ),
-                      for (var item in pesanan.items)
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  '${item.productName} x${item.quantity}',
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 12,
-                                    color: AppStyle.hijauTua,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                formatRupiah(item.subtotal),
-                                style: GoogleFonts.poppins(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppStyle.hijauTua,
-                                ),
-                              ),
-                            ],
+                        const SizedBox(height: 10),
+                        Text(
+                          'Status: ${teksStatusPesanan(pesanan.orderStatus)}',
+                          style: GoogleFonts.poppins(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            color: warnaStatusPesanan(pesanan.orderStatus),
                           ),
                         ),
-                      const SizedBox(height: 12),
-                      const Divider(height: 1, color: AppStyle.garis),
-                      const SizedBox(height: 12),
-                      Row(
-                        children: [
+                        const SizedBox(height: 14),
+                        const Divider(height: 1, color: AppStyle.garis),
+                        const SizedBox(height: 10),
+                        if (pesanan.items.isEmpty)
                           Text(
-                            'Total Pembayaran',
+                            'Daftar item tidak tersedia.',
                             style: GoogleFonts.poppins(
                               fontSize: 12,
                               color: AppStyle.abuTeks,
                             ),
                           ),
-                          const Spacer(),
-                          Text(
-                            formatRupiah(pesanan.totalAmount),
-                            style: GoogleFonts.poppins(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                              color: AppStyle.hijauTua,
+                        for (var item in pesanan.items)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    '${item.productName} x${item.quantity}',
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 12,
+                                      color: AppStyle.hijauTua,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  formatRupiah(item.subtotal),
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppStyle.hijauTua,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        'Pembayaran: ${teksMetodeBayar(pesanan.paymentMethod)}'
-                        ' · ${teksStatusBayar(pesanan.paymentStatus)}',
-                        style: GoogleFonts.poppins(
-                          fontSize: 11,
-                          color: AppStyle.abuTeks,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                if (bolehCustomerSelesaikan(pesanan.orderStatus)) ...[
-                  const SizedBox(height: 16),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 48,
-                    child: ElevatedButton(
-                      onPressed: sedangProses ? null : tandaiDiterima,
-                      style: AppStyle.tombolUtama(),
-                      child: sedangProses
-                          ? const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                color: Colors.white,
-                              ),
-                            )
-                          : Text(
-                              'Pesanan Diterima',
+                        const SizedBox(height: 12),
+                        const Divider(height: 1, color: AppStyle.garis),
+                        const SizedBox(height: 12),
+                        Row(
+                          children: [
+                            Text(
+                              'Total Pembayaran',
                               style: GoogleFonts.poppins(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 12,
+                                color: AppStyle.abuTeks,
                               ),
                             ),
+                            const Spacer(),
+                            Text(
+                              formatRupiah(pesanan.totalAmount),
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                                color: AppStyle.hijauTua,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          'Pembayaran: ${teksMetodeBayar(pesanan.paymentMethod)}'
+                          ' · ${teksStatusBayar(pesanan.paymentStatus)}',
+                          style: GoogleFonts.poppins(
+                            fontSize: 11,
+                            color: AppStyle.abuTeks,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
+                  if (bolehCustomerSelesaikan(pesanan.orderStatus)) ...[
+                    const SizedBox(height: 16),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 48,
+                      child: ElevatedButton(
+                        onPressed: sedangProses ? null : tandaiDiterima,
+                        style: AppStyle.tombolUtama(),
+                        child: sedangProses
+                            ? const SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : Text(
+                                'Pesanan Diterima',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                      ),
+                    ),
+                  ],
                 ],
-              ],
+              ),
             ),
     );
   }

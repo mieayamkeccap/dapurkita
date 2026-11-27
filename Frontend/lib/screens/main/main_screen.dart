@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../customer/beranda_screen.dart';
@@ -7,6 +6,7 @@ import '../customer/pesanan_screen.dart';
 import '../customer/profil_screen.dart';
 import '../../services/keranjang_store.dart';
 import '../../widgets/app_style.dart';
+import '../../widgets/responsive.dart';
 
 // Halaman utama customer dengan 4 menu di bawah
 class MainScreen extends StatefulWidget {
@@ -56,44 +56,49 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
-          border: Border(
-            top: BorderSide(color: AppStyle.garis),
-          ),
+          border: Border(top: BorderSide(color: AppStyle.garis)),
         ),
-        child: BottomNavigationBar(
-          currentIndex: menuDipilih,
-          onTap: (index) {
-            setState(() {
-              menuDipilih = index;
-            });
-          },
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.white,
-          selectedItemColor: AppStyle.hijauTua,
-          unselectedItemColor: AppStyle.abuTeks,
-          selectedFontSize: 11,
-          unselectedFontSize: 11,
-          items: [
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              activeIcon: Icon(Icons.home_rounded),
-              label: 'Beranda',
+        // Di layar lebar konten dibatasi 480 dan di tengah, jadi nav ikut
+        // dibatasi supaya sejajar dengan isi halaman di atasnya.
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: lebarMaksCustomer),
+            child: BottomNavigationBar(
+              currentIndex: menuDipilih,
+              onTap: (index) {
+                setState(() {
+                  menuDipilih = index;
+                });
+              },
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: Colors.white,
+              selectedItemColor: AppStyle.hijauTua,
+              unselectedItemColor: AppStyle.abuTeks,
+              selectedFontSize: 11,
+              unselectedFontSize: 11,
+              items: [
+                const BottomNavigationBarItem(
+                  icon: Icon(Icons.home_outlined),
+                  activeIcon: Icon(Icons.home_rounded),
+                  label: 'Beranda',
+                ),
+                const BottomNavigationBarItem(
+                  icon: Icon(Icons.receipt_long_outlined),
+                  activeIcon: Icon(Icons.receipt_long_rounded),
+                  label: 'Pesanan',
+                ),
+                BottomNavigationBarItem(
+                  icon: buildIkonKeranjang(),
+                  label: 'Keranjang',
+                ),
+                const BottomNavigationBarItem(
+                  icon: Icon(Icons.person_outline_rounded),
+                  activeIcon: Icon(Icons.person_rounded),
+                  label: 'Profil',
+                ),
+              ],
             ),
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.receipt_long_outlined),
-              activeIcon: Icon(Icons.receipt_long_rounded),
-              label: 'Pesanan',
-            ),
-            BottomNavigationBarItem(
-              icon: buildIkonKeranjang(),
-              label: 'Keranjang',
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline_rounded),
-              activeIcon: Icon(Icons.person_rounded),
-              label: 'Profil',
-            ),
-          ],
+          ),
         ),
       ),
     );

@@ -564,11 +564,15 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     color: Colors.white,
                   ),
                 )
-              : Text(
-                  'Pesan Sekarang · ${formatRupiah(totalPembayaran())}',
-                  style: GoogleFonts.poppins(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
+              : FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    'Pesan Sekarang · ${formatRupiah(totalPembayaran())}',
+                    maxLines: 1,
+                    style: GoogleFonts.poppins(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
         ),

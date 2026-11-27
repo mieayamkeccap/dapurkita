@@ -134,46 +134,68 @@ class _KelolaProdukScreenState extends State<KelolaProdukScreen> {
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
-          child: Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  onChanged: (value) {
-                    setState(() {
-                      kataCari = value;
-                    });
-                  },
-                  style: const TextStyle(fontSize: 13),
-                  decoration: AppStyle.kotakIsian(
-                    hint: 'Cari produk...',
-                    icon: Icons.search_rounded,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10),
-              SizedBox(
-                height: 52,
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    bukaForm(null);
-                  },
-                  style: AppStyle.tombolUtama().copyWith(
-                    minimumSize: const WidgetStatePropertyAll(Size(0, 52)),
-                    padding: const WidgetStatePropertyAll(
-                      EdgeInsets.symmetric(horizontal: 16),
+          // Di layar sangat sempit (< 380) kolom cari terjepit tombol:
+          // tombol tampil ikon + saja supaya kolom cari tetap lega.
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final bool ringkas = constraints.maxWidth < 380;
+              return Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          kataCari = value;
+                        });
+                      },
+                      style: const TextStyle(fontSize: 13),
+                      decoration: AppStyle.kotakIsian(
+                        hint: 'Cari produk...',
+                        icon: Icons.search_rounded,
+                      ),
                     ),
                   ),
-                  icon: const Icon(Icons.add_rounded, size: 18),
-                  label: Text(
-                    'Tambah Produk',
-                    style: GoogleFonts.poppins(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  const SizedBox(width: 10),
+                  SizedBox(
+                    height: 52,
+                    child: ringkas
+                        ? ElevatedButton(
+                            onPressed: () {
+                              bukaForm(null);
+                            },
+                            style: AppStyle.tombolUtama().copyWith(
+                              minimumSize:
+                                  const WidgetStatePropertyAll(Size(52, 52)),
+                              padding: const WidgetStatePropertyAll(
+                                EdgeInsets.zero,
+                              ),
+                            ),
+                            child: const Icon(Icons.add_rounded, size: 20),
+                          )
+                        : ElevatedButton.icon(
+                            onPressed: () {
+                              bukaForm(null);
+                            },
+                            style: AppStyle.tombolUtama().copyWith(
+                              minimumSize:
+                                  const WidgetStatePropertyAll(Size(0, 52)),
+                              padding: const WidgetStatePropertyAll(
+                                EdgeInsets.symmetric(horizontal: 16),
+                              ),
+                            ),
+                            icon: const Icon(Icons.add_rounded, size: 18),
+                            label: Text(
+                              'Tambah Produk',
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
                   ),
-                ),
-              ),
-            ],
+                ],
+              );
+            },
           ),
         ),
         Expanded(child: buildIsi()),

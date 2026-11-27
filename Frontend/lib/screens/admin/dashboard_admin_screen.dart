@@ -394,35 +394,45 @@ class _DashboardAdminScreenState extends State<DashboardAdminScreen> {
   }
 
   Widget buildBarisKartu() {
-    return Row(
-      children: [
-        Expanded(
-          child: buildKartuStatistik(
-            Icons.inventory_2_outlined,
-            'Total Produk',
-            '$totalProduk',
-            AppStyle.oranye,
-          ),
-        ),
-        const SizedBox(width: 10),
-        Expanded(
-          child: buildKartuStatistik(
-            Icons.shopping_bag_outlined,
-            'Total Pesanan',
-            '$totalPesanan',
-            const Color(0xFF2F80ED),
-          ),
-        ),
-        const SizedBox(width: 10),
-        Expanded(
-          child: buildKartuStatistik(
-            Icons.people_alt_outlined,
-            'Pelanggan',
-            '$totalPelanggan',
-            AppStyle.hijau,
-          ),
-        ),
-      ],
+    // Di HP sempit (lebar < 420) tiap kartu cuma ~90px: pakai gaya ringkas
+    // supaya judul tidak kepotong dan angka tetap muat.
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final bool ringkas = constraints.maxWidth < 420;
+        return Row(
+          children: [
+            Expanded(
+              child: buildKartuStatistik(
+                Icons.inventory_2_outlined,
+                'Total Produk',
+                '$totalProduk',
+                AppStyle.oranye,
+                ringkas: ringkas,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: buildKartuStatistik(
+                Icons.shopping_bag_outlined,
+                'Total Pesanan',
+                '$totalPesanan',
+                const Color(0xFF2F80ED),
+                ringkas: ringkas,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: buildKartuStatistik(
+                Icons.people_alt_outlined,
+                'Pelanggan',
+                '$totalPelanggan',
+                AppStyle.hijau,
+                ringkas: ringkas,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -430,10 +440,11 @@ class _DashboardAdminScreenState extends State<DashboardAdminScreen> {
     IconData ikon,
     String judul,
     String angka,
-    Color warna,
-  ) {
+    Color warna, {
+    bool ringkas = false,
+  }) {
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: EdgeInsets.all(ringkas ? 10 : 14),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -443,13 +454,13 @@ class _DashboardAdminScreenState extends State<DashboardAdminScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 34,
-            height: 34,
+            width: ringkas ? 30 : 34,
+            height: ringkas ? 30 : 34,
             decoration: BoxDecoration(
               color: warna.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Icon(ikon, color: warna, size: 18),
+            child: Icon(ikon, color: warna, size: ringkas ? 16 : 18),
           ),
           const SizedBox(height: 10),
           Text(
@@ -457,14 +468,14 @@ class _DashboardAdminScreenState extends State<DashboardAdminScreen> {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: GoogleFonts.poppins(
-              fontSize: 10,
+              fontSize: ringkas ? 9 : 10,
               color: AppStyle.abuTeks,
             ),
           ),
           Text(
             angka,
             style: GoogleFonts.poppins(
-              fontSize: 20,
+              fontSize: ringkas ? 17 : 20,
               fontWeight: FontWeight.w700,
               color: AppStyle.hijauTua,
             ),
