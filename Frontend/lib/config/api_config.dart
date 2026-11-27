@@ -1,7 +1,14 @@
 
 class ApiConfig {
-  // Alamat backend
-  static const String baseUrl = 'http://localhost:8000/api';
+  // Alamat backend.
+  //
+  // Nilai bawaan tetap localhost supaya `flutter run` di komputer sendiri tidak
+  // berubah. Saat build untuk deploy, alamat server diberikan lewat:
+  //   flutter build web --dart-define=API_BASE_URL=https://nama.onrender.com/api
+  static const String baseUrl = String.fromEnvironment(
+    'API_BASE_URL',
+    defaultValue: 'http://localhost:8000/api',
+  );
 
   // Endpoint autentikasi
   static const String login = '$baseUrl/auth/login';
