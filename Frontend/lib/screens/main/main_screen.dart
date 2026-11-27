@@ -50,6 +50,12 @@ class _MainScreenState extends State<MainScreen> {
       );
     }
 
+    // Lebar nav mengikuti lebar konten adaptif supaya sejajar dengan isi
+    // halaman di semua ukuran layar (HP 480, tablet 720, desktop 1100).
+    final double lebarNav = lebarKontenAdaptif(context);
+    // Di HP sangat sempit (<360) label diperkecil supaya 4 item tetap muat.
+    final bool labelSempit = MediaQuery.of(context).size.width < 360;
+
     return Scaffold(
       backgroundColor: AppStyle.latar,
       body: isiHalaman,
@@ -58,14 +64,14 @@ class _MainScreenState extends State<MainScreen> {
           color: Colors.white,
           border: Border(top: BorderSide(color: AppStyle.garis)),
         ),
-        // Di layar lebar konten dibatasi 480 dan di tengah, jadi nav ikut
+        // Di layar lebar konten dibatasi dan di tengah, jadi nav ikut
         // dibatasi supaya sejajar dengan isi halaman di atasnya.
         // heightFactor 1.0 wajib: tanpa ini Center mengembang setinggi slot
         // bottom-nav sehingga body terhimpit nol dan layar jadi putih.
         child: Center(
           heightFactor: 1.0,
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: lebarMaksCustomer),
+            constraints: BoxConstraints(maxWidth: lebarNav),
             child: BottomNavigationBar(
               currentIndex: menuDipilih,
               onTap: (index) {
@@ -77,8 +83,8 @@ class _MainScreenState extends State<MainScreen> {
               backgroundColor: Colors.white,
               selectedItemColor: AppStyle.hijauTua,
               unselectedItemColor: AppStyle.abuTeks,
-              selectedFontSize: 11,
-              unselectedFontSize: 11,
+              selectedFontSize: labelSempit ? 10 : 11,
+              unselectedFontSize: labelSempit ? 10 : 11,
               items: [
                 const BottomNavigationBarItem(
                   icon: Icon(Icons.home_outlined),
