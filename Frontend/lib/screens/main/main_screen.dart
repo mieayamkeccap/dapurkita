@@ -68,44 +68,50 @@ class _MainScreenState extends State<MainScreen> {
         // dibatasi supaya sejajar dengan isi halaman di atasnya.
         // heightFactor 1.0 wajib: tanpa ini Center mengembang setinggi slot
         // bottom-nav sehingga body terhimpit nol dan layar jadi putih.
+        // SizedBox width infinity wajib: tanpa ini BottomNavigationBar
+        // menyusut mengikuti lebar item (tampil sempit di tengah),
+        // sedangkan isi halaman dipaksa penuh via BatasLebar.
         child: Center(
           heightFactor: 1.0,
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: lebarNav),
-            child: BottomNavigationBar(
-              currentIndex: menuDipilih,
-              onTap: (index) {
-                setState(() {
-                  menuDipilih = index;
-                });
-              },
-              type: BottomNavigationBarType.fixed,
-              backgroundColor: Colors.white,
-              selectedItemColor: AppStyle.hijauTua,
-              unselectedItemColor: AppStyle.abuTeks,
-              selectedFontSize: labelSempit ? 10 : 11,
-              unselectedFontSize: labelSempit ? 10 : 11,
-              items: [
-                const BottomNavigationBarItem(
-                  icon: Icon(Icons.home_outlined),
-                  activeIcon: Icon(Icons.home_rounded),
-                  label: 'Beranda',
-                ),
-                const BottomNavigationBarItem(
-                  icon: Icon(Icons.receipt_long_outlined),
-                  activeIcon: Icon(Icons.receipt_long_rounded),
-                  label: 'Pesanan',
-                ),
-                BottomNavigationBarItem(
-                  icon: buildIkonKeranjang(),
-                  label: 'Keranjang',
-                ),
-                const BottomNavigationBarItem(
-                  icon: Icon(Icons.person_outline_rounded),
-                  activeIcon: Icon(Icons.person_rounded),
-                  label: 'Profil',
-                ),
-              ],
+            child: SizedBox(
+              width: double.infinity,
+              child: BottomNavigationBar(
+                currentIndex: menuDipilih,
+                onTap: (index) {
+                  setState(() {
+                    menuDipilih = index;
+                  });
+                },
+                type: BottomNavigationBarType.fixed,
+                backgroundColor: Colors.white,
+                selectedItemColor: AppStyle.hijauTua,
+                unselectedItemColor: AppStyle.abuTeks,
+                selectedFontSize: labelSempit ? 10 : 11,
+                unselectedFontSize: labelSempit ? 10 : 11,
+                items: [
+                  const BottomNavigationBarItem(
+                    icon: Icon(Icons.home_outlined),
+                    activeIcon: Icon(Icons.home_rounded),
+                    label: 'Beranda',
+                  ),
+                  const BottomNavigationBarItem(
+                    icon: Icon(Icons.receipt_long_outlined),
+                    activeIcon: Icon(Icons.receipt_long_rounded),
+                    label: 'Pesanan',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: buildIkonKeranjang(),
+                    label: 'Keranjang',
+                  ),
+                  const BottomNavigationBarItem(
+                    icon: Icon(Icons.person_outline_rounded),
+                    activeIcon: Icon(Icons.person_rounded),
+                    label: 'Profil',
+                  ),
+                ],
+              ),
             ),
           ),
         ),
