@@ -4,7 +4,7 @@ class ApiConfig {
   //
   // Nilai bawaan tetap localhost supaya `flutter run` di komputer sendiri tidak
   // berubah. Saat build untuk deploy, alamat server diberikan lewat:
-  //   flutter build web --dart-define=API_BASE_URL=https://nama.onrender.com/api
+  //   flutter build web --dart-define=API_BASE_URL=https://nama.vercel.app/api
   static const String baseUrl = String.fromEnvironment(
     'API_BASE_URL',
     defaultValue: 'http://localhost:8000/api',

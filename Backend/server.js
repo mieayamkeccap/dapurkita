@@ -67,6 +67,13 @@ app.use((error, req, res, next) => {
 // Menjalankan server
 const PORT = process.env.PORT || 8000;
 
-app.listen(PORT, () => {
-    console.log(`Server berjalan di http://localhost:${PORT}`);
-});
+// Di Vercel (serverless) file ini di-require dari api/index.js — jangan listen,
+// Vercel yang memanggil app-nya sendiri. Di lokal (`nodemon server.js`) blok
+// ini tetap jalan seperti biasa.
+if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`Server berjalan di http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;
