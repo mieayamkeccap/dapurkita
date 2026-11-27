@@ -35,3 +35,6 @@ Thumbs.db
 # ===== Tool lokal (tidak untuk repo) =====
 .vibecode/
 AGENTS.md
+
+# Local Netlify folder
+.netlify
