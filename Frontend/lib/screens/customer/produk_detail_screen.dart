@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -116,23 +115,67 @@ class _ProdukDetailScreenState extends State<ProdukDetailScreen> {
       body: SafeArea(
         bottom: false,
         child: BatasLebar(
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView(
-                padding: EdgeInsets.zero,
+          maxWidth: lebarKontenAdaptif(context),
+          child: LayoutBuilder(
+            builder: (context, batas) {
+              // HP (<900): susun bawah seperti semula.
+              if (!pakaiDuaKolom(batas.maxWidth)) {
+                return Column(
+                  children: [
+                    Expanded(
+                      child: ListView(
+                        padding: EdgeInsets.zero,
+                        children: [
+                          buildGambarAtas(),
+                          buildInfoProduk(),
+                          buildDetailProduk(),
+                          buildPilihanJumlah(),
+                          const SizedBox(height: 20),
+                        ],
+                      ),
+                    ),
+                    buildTombolBawah(),
+                  ],
+                );
+              }
+
+              // Desktop/tablet lebar (>=900): foto + info kiri,
+              // detail + jumlah kanan.
+              return Column(
                 children: [
-                  buildGambarAtas(),
-                  buildInfoProduk(),
-                  buildDetailProduk(),
-                  buildPilihanJumlah(),
-                  const SizedBox(height: 20),
+                  Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: ListView(
+                            padding: EdgeInsets.zero,
+                            children: [
+                              buildGambarAtas(),
+                              buildInfoProduk(),
+                              const SizedBox(height: 20),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 380,
+                          child: ListView(
+                            padding: const EdgeInsets.fromLTRB(0, 20, 20, 0),
+                            children: [
+                              buildDetailProduk(),
+                              buildPilihanJumlah(),
+                              const SizedBox(height: 20),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  buildTombolBawah(),
                 ],
-              ),
-            ),
-            buildTombolBawah(),
-          ],
-        ),
+              );
+            },
+          ),
         ),
       ),
     );
@@ -141,8 +184,9 @@ class _ProdukDetailScreenState extends State<ProdukDetailScreen> {
   Widget buildGambarAtas() {
     // Lebar dibatasi maks customer (480) dan tinggi maks 360 supaya di
     // Chrome desktop 1920px foto tidak jadi 1440px tingginya.
-    final double lebarLayar =
-        MediaQuery.of(context).size.width.clamp(0, lebarMaksCustomer).toDouble();
+    final double lebarLayar = MediaQuery.of(
+      context,
+    ).size.width.clamp(0, lebarMaksCustomer).toDouble();
     return Stack(
       children: [
         ClipRRect(
@@ -159,20 +203,15 @@ class _ProdukDetailScreenState extends State<ProdukDetailScreen> {
         Positioned(
           top: 14,
           left: 14,
-          child: buildTombolBulat(
-            Icons.arrow_back_rounded,
-            () {
-              Navigator.pop(context);
-            },
-          ),
+          child: buildTombolBulat(Icons.arrow_back_rounded, () {
+            Navigator.pop(context);
+          }),
         ),
         Positioned(
           top: 14,
           right: 14,
           child: buildTombolBulat(
-            isFavorite
-                ? Icons.favorite_rounded
-                : Icons.favorite_border_rounded,
+            isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
             toggleFavorite,
             ikonWarna: isFavorite ? AppStyle.merah : AppStyle.hijauTua,
           ),
@@ -181,7 +220,11 @@ class _ProdukDetailScreenState extends State<ProdukDetailScreen> {
     );
   }
 
-  Widget buildTombolBulat(IconData ikon, VoidCallback onTap, {Color ikonWarna = AppStyle.hijauTua}) {
+  Widget buildTombolBulat(
+    IconData ikon,
+    VoidCallback onTap, {
+    Color ikonWarna = AppStyle.hijauTua,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -237,11 +280,7 @@ class _ProdukDetailScreenState extends State<ProdukDetailScreen> {
                 ),
               ),
               const SizedBox(width: 10),
-              const Icon(
-                Icons.star_rounded,
-                color: AppStyle.oranye,
-                size: 16,
-              ),
+              const Icon(Icons.star_rounded, color: AppStyle.oranye, size: 16),
               const SizedBox(width: 2),
               Text(
                 '4.8 (1.2k ulasan)',
@@ -313,10 +352,7 @@ class _ProdukDetailScreenState extends State<ProdukDetailScreen> {
           const SizedBox(height: 6),
           Text(
             judul,
-            style: GoogleFonts.poppins(
-              fontSize: 10,
-              color: AppStyle.abuTeks,
-            ),
+            style: GoogleFonts.poppins(fontSize: 10, color: AppStyle.abuTeks),
           ),
           Text(
             isi,

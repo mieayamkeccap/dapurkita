@@ -184,27 +184,71 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         ),
       ),
       body: BatasLebar(
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.all(20),
+        maxWidth: lebarKontenAdaptif(context),
+        child: LayoutBuilder(
+          builder: (context, batas) {
+            // HP (<900): susun bawah seperti semula.
+            if (!pakaiDuaKolom(batas.maxWidth)) {
+              return Column(
                 children: [
-                  buildKartuAlamat(),
-                  const SizedBox(height: 14),
-                  buildKartuMetodeAmbil(),
-                  const SizedBox(height: 14),
-                  buildKartuPembayaran(),
-                  const SizedBox(height: 14),
-                  buildKartuPenerima(),
-                  const SizedBox(height: 14),
-                  buildKartuRingkasan(),
-                  const SizedBox(height: 20),
+                  Expanded(
+                    child: ListView(
+                      padding: const EdgeInsets.all(20),
+                      children: [
+                        buildKartuAlamat(),
+                        const SizedBox(height: 14),
+                        buildKartuMetodeAmbil(),
+                        const SizedBox(height: 14),
+                        buildKartuPembayaran(),
+                        const SizedBox(height: 14),
+                        buildKartuPenerima(),
+                        const SizedBox(height: 14),
+                        buildKartuRingkasan(),
+                        const SizedBox(height: 20),
+                      ],
+                    ),
+                  ),
+                  buildTombolBawah(),
                 ],
-              ),
-            ),
-            buildTombolBawah(),
-          ],
+              );
+            }
+
+            // Desktop/tablet lebar (>=900): form kiri, ringkasan kanan.
+            return Column(
+              children: [
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: ListView(
+                          padding: const EdgeInsets.all(20),
+                          children: [
+                            buildKartuAlamat(),
+                            const SizedBox(height: 14),
+                            buildKartuMetodeAmbil(),
+                            const SizedBox(height: 14),
+                            buildKartuPembayaran(),
+                            const SizedBox(height: 14),
+                            buildKartuPenerima(),
+                            const SizedBox(height: 20),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 380,
+                        child: ListView(
+                          padding: const EdgeInsets.fromLTRB(0, 20, 20, 20),
+                          children: [buildKartuRingkasan()],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                buildTombolBawah(),
+              ],
+            );
+          },
         ),
       ),
     );

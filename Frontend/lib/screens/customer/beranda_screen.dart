@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -159,6 +158,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
       backgroundColor: AppStyle.latar,
       body: SafeArea(
         child: BatasLebar(
+          maxWidth: lebarKontenAdaptif(context),
           child: RefreshIndicator(
             onRefresh: loadData,
             color: AppStyle.hijauTua,
@@ -234,10 +234,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
               IconButton(
                 onPressed: keluar,
                 tooltip: 'Keluar',
-                icon: const Icon(
-                  Icons.logout_rounded,
-                  color: Colors.white,
-                ),
+                icon: const Icon(Icons.logout_rounded, color: Colors.white),
               ),
             ],
           ),
@@ -363,10 +360,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
           ),
           Text(
             keterangan,
-            style: GoogleFonts.poppins(
-              fontSize: 11,
-              color: AppStyle.abuTeks,
-            ),
+            style: GoogleFonts.poppins(fontSize: 11, color: AppStyle.abuTeks),
           ),
         ],
       ),
@@ -379,10 +373,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Text(
           'Belum ada kategori.',
-          style: GoogleFonts.poppins(
-            fontSize: 12,
-            color: AppStyle.abuTeks,
-          ),
+          style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.abuTeks),
         ),
       );
     }
@@ -480,30 +471,55 @@ class _BerandaScreenState extends State<BerandaScreen> {
         child: Text(
           'Menu tidak ditemukan.',
           textAlign: TextAlign.center,
-          style: GoogleFonts.poppins(
-            fontSize: 12,
-            color: AppStyle.abuTeks,
-          ),
+          style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.abuTeks),
         ),
       );
     }
 
-    List<Widget> kartu = [];
+    // HP (<700): 1 kolom seperti semula. Tablet/desktop: grid 2-3 kolom
+    // supaya konten tidak ramping terjepit di tengah layar lebar.
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final int kolom = kolomGridProduk(constraints.maxWidth);
 
-    for (var product in daftar) {
-      kartu.add(buildKartuProduk(product));
-    }
+        if (kolom == 1) {
+          return Column(
+            children: [for (var product in daftar) buildKartuProduk(product)],
+          );
+        }
 
-    return Column(children: kartu);
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+          child: GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: kolom,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              mainAxisExtent: 104,
+            ),
+            itemCount: daftar.length,
+            itemBuilder: (context, index) =>
+                buildKartuProduk(daftar[index], tanpaMarginLuar: true),
+          ),
+        );
+      },
+    );
   }
 
-  Widget buildKartuProduk(ProductModel product) {
+  Widget buildKartuProduk(
+    ProductModel product, {
+    bool tanpaMarginLuar = false,
+  }) {
     return GestureDetector(
       onTap: () {
         bukaDetail(product);
       },
       child: Container(
-        margin: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+        margin: tanpaMarginLuar
+            ? EdgeInsets.zero
+            : const EdgeInsets.fromLTRB(20, 0, 20, 12),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -586,19 +602,12 @@ class _BerandaScreenState extends State<BerandaScreen> {
       ),
       child: Column(
         children: [
-          const Icon(
-            Icons.wifi_off_rounded,
-            size: 40,
-            color: AppStyle.abuTeks,
-          ),
+          const Icon(Icons.wifi_off_rounded, size: 40, color: AppStyle.abuTeks),
           const SizedBox(height: 10),
           Text(
             errorMessage,
             textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(
-              fontSize: 12,
-              color: AppStyle.abuTeks,
-            ),
+            style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.abuTeks),
           ),
           const SizedBox(height: 12),
           ElevatedButton(
@@ -619,11 +628,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
 // (w=1200) supaya tidak pecah di daftar maupun di detail.
 // Isi [lebar] kalau mau gambar selebar layar (mis. halaman detail);
 // kalau kosong, tetap pakai [ukuran] untuk thumbnail di daftar.
-Widget buildGambarProduk(
-  ProductModel product,
-  double ukuran, {
-  double? lebar,
-}) {
+Widget buildGambarProduk(ProductModel product, double ukuran, {double? lebar}) {
   final double lebarPakai = lebar ?? ukuran;
   final double tinggi = lebarPakai * 3 / 4;
   if (product.imageUrl == '') {

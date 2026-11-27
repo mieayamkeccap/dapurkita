@@ -98,6 +98,7 @@ class _KeranjangScreenState extends State<KeranjangScreen> {
         ],
       ),
       body: BatasLebar(
+        maxWidth: lebarKontenAdaptif(context),
         child: KeranjangStore.items.isEmpty ? buildKosong() : buildIsi(),
       ),
     );
@@ -139,17 +140,47 @@ class _KeranjangScreenState extends State<KeranjangScreen> {
     return Column(
       children: [
         Expanded(
-          child: ListView(
-            padding: const EdgeInsets.all(20),
-            children: [
-              for (var item in KeranjangStore.items)
-                buildKartuItem(
-                  item.product.id,
-                  item.product.name,
-                  item.product.price,
-                  item.quantity,
+          // HP (<700): 1 kolom seperti semula. Tablet/desktop: grid 2 kolom.
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final int kolom = kolomGridProduk(constraints.maxWidth);
+
+              if (kolom == 1) {
+                return ListView(
+                  padding: const EdgeInsets.all(20),
+                  children: [
+                    for (var item in KeranjangStore.items)
+                      buildKartuItem(
+                        item.product.id,
+                        item.product.name,
+                        item.product.price,
+                        item.quantity,
+                      ),
+                  ],
+                );
+              }
+
+              return GridView.builder(
+                padding: const EdgeInsets.all(20),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: kolom > 2 ? 2 : kolom,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  mainAxisExtent: 148,
                 ),
-            ],
+                itemCount: KeranjangStore.items.length,
+                itemBuilder: (context, index) {
+                  final item = KeranjangStore.items[index];
+                  return buildKartuItem(
+                    item.product.id,
+                    item.product.name,
+                    item.product.price,
+                    item.quantity,
+                    tanpaMarginLuar: true,
+                  );
+                },
+              );
+            },
           ),
         ),
         buildRingkasan(),
@@ -157,14 +188,22 @@ class _KeranjangScreenState extends State<KeranjangScreen> {
     );
   }
 
-  Widget buildKartuItem(int productId, String nama, int harga, int jumlah) {
+  Widget buildKartuItem(
+    int productId,
+    String nama,
+    int harga,
+    int jumlah, {
+    bool tanpaMarginLuar = false,
+  }) {
     // Cari produknya untuk ditampilkan gambarnya
     var item = KeranjangStore.items.firstWhere(
       (item) => item.product.id == productId,
     );
 
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
+      margin: tanpaMarginLuar
+          ? EdgeInsets.zero
+          : const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,

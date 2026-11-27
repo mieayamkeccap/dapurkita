@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -92,96 +91,90 @@ class _ProfilScreenState extends State<ProfilScreen> {
         actions: [
           IconButton(
             onPressed: bukaPengaturan,
-            icon: const Icon(
-              Icons.settings_outlined,
-              color: AppStyle.hijauTua,
-            ),
+            icon: const Icon(Icons.settings_outlined, color: AppStyle.hijauTua),
           ),
         ],
       ),
       body: BatasLebar(
+        maxWidth: lebarKontenAdaptif(context),
         child: ListView(
-        padding: const EdgeInsets.all(20),
-        children: [
-          Column(
-            children: [
-              Container(
-                width: 96,
-                height: 96,
-                decoration: const BoxDecoration(
-                  color: AppStyle.hijauMuda,
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(
-                  Icons.person_rounded,
-                  size: 56,
-                  color: AppStyle.hijauTua,
-                ),
-              ),
-              const SizedBox(height: 12),
-              Text(
-                userName == '' ? 'Pelanggan' : userName,
-                style: GoogleFonts.poppins(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  color: AppStyle.hijauTua,
-                ),
-              ),
-              Text(
-                userEmail == '' ? '-' : userEmail,
-                style: GoogleFonts.poppins(
-                  fontSize: 12,
-                  color: AppStyle.abuTeks,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 24),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: AppStyle.garis),
-            ),
-            child: Column(
+          padding: const EdgeInsets.all(20),
+          children: [
+            Column(
               children: [
-                buildMenu(
-                  Icons.receipt_long_outlined,
-                  'Pesanan Saya',
-                  widget.bukaPesanan,
+                Container(
+                  width: 96,
+                  height: 96,
+                  decoration: const BoxDecoration(
+                    color: AppStyle.hijauMuda,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.person_rounded,
+                    size: 56,
+                    color: AppStyle.hijauTua,
+                  ),
                 ),
-                buildMenu(
-                  Icons.location_on_outlined,
-                  'Alamat Saya',
-                  () => bukaHalaman(const AlamatScreen()),
+                const SizedBox(height: 12),
+                Text(
+                  userName == '' ? 'Pelanggan' : userName,
+                  style: GoogleFonts.poppins(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    color: AppStyle.hijauTua,
+                  ),
                 ),
-                buildMenu(
-                  Icons.favorite_border_rounded,
-                  'Favorit',
-                  () => bukaHalaman(const FavoritScreen()),
-                ),
-                buildMenu(
-                  Icons.settings_outlined,
-                  'Pengaturan',
-                  bukaPengaturan,
+                Text(
+                  userEmail == '' ? '-' : userEmail,
+                  style: GoogleFonts.poppins(
+                    fontSize: 12,
+                    color: AppStyle.abuTeks,
+                  ),
                 ),
               ],
             ),
-          ),
-          const SizedBox(height: 14),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: AppStyle.garis),
+            const SizedBox(height: 24),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: AppStyle.garis),
+              ),
+              child: Column(
+                children: [
+                  buildMenu(
+                    Icons.receipt_long_outlined,
+                    'Pesanan Saya',
+                    widget.bukaPesanan,
+                  ),
+                  buildMenu(
+                    Icons.location_on_outlined,
+                    'Alamat Saya',
+                    () => bukaHalaman(const AlamatScreen()),
+                  ),
+                  buildMenu(
+                    Icons.favorite_border_rounded,
+                    'Favorit',
+                    () => bukaHalaman(const FavoritScreen()),
+                  ),
+                  buildMenu(
+                    Icons.settings_outlined,
+                    'Pengaturan',
+                    bukaPengaturan,
+                  ),
+                ],
+              ),
             ),
-            child: buildMenu(
-              Icons.logout_rounded,
-              'Keluar Akun',
-              keluar,
+            const SizedBox(height: 14),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: AppStyle.garis),
+              ),
+              child: buildMenu(Icons.logout_rounded, 'Keluar Akun', keluar),
             ),
-          ),
-        ],
+          ],
         ),
       ),
     );

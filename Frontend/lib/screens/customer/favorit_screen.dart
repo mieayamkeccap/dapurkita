@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -74,7 +73,10 @@ class _FavoritScreenState extends State<FavoritScreen> {
           ),
         ),
       ),
-      body: BatasLebar(child: buildIsi()),
+      body: BatasLebar(
+        maxWidth: lebarKontenAdaptif(context),
+        child: buildIsi(),
+      ),
     );
   }
 
@@ -93,7 +95,10 @@ class _FavoritScreenState extends State<FavoritScreen> {
             children: [
               Text(
                 errorMessage,
-                style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.abuTeks),
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  color: AppStyle.abuTeks,
+                ),
               ),
               const SizedBox(height: 12),
               ElevatedButton(
@@ -115,7 +120,11 @@ class _FavoritScreenState extends State<FavoritScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.favorite_border_rounded, size: 60, color: AppStyle.abuTeks),
+              const Icon(
+                Icons.favorite_border_rounded,
+                size: 60,
+                color: AppStyle.abuTeks,
+              ),
               const SizedBox(height: 14),
               Text(
                 'Belum ada menu favorit',
@@ -129,28 +138,55 @@ class _FavoritScreenState extends State<FavoritScreen> {
               Text(
                 'Tekan ikon hati di detail produk untuk menyimpan favorit.',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.abuTeks),
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  color: AppStyle.abuTeks,
+                ),
               ),
             ],
           ),
         ),
       );
     }
+    // HP (<700): 1 kolom seperti semula. Tablet/desktop: grid 2-3 kolom.
     return RefreshIndicator(
       onRefresh: loadFavorites,
       color: AppStyle.hijauTua,
-      child: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
-        children: [for (var p in favorites) buildKartu(p)],
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final int kolom = kolomGridProduk(constraints.maxWidth);
+
+          if (kolom == 1) {
+            return ListView(
+              padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
+              children: [for (var p in favorites) buildKartu(p)],
+            );
+          }
+
+          return GridView.builder(
+            padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: kolom,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              mainAxisExtent: 96,
+            ),
+            itemCount: favorites.length,
+            itemBuilder: (context, index) =>
+                buildKartu(favorites[index], tanpaMarginLuar: true),
+          );
+        },
       ),
     );
   }
 
-  Widget buildKartu(ProductModel product) {
+  Widget buildKartu(ProductModel product, {bool tanpaMarginLuar = false}) {
     return GestureDetector(
       onTap: () => bukaDetail(product),
       child: Container(
-        margin: const EdgeInsets.only(bottom: 12),
+        margin: tanpaMarginLuar
+            ? EdgeInsets.zero
+            : const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -181,7 +217,10 @@ class _FavoritScreenState extends State<FavoritScreen> {
                   if (product.categoryName != '')
                     Text(
                       product.categoryName,
-                      style: GoogleFonts.poppins(fontSize: 10, color: AppStyle.abuTeks),
+                      style: GoogleFonts.poppins(
+                        fontSize: 10,
+                        color: AppStyle.abuTeks,
+                      ),
                     ),
                   const SizedBox(height: 6),
                   Text(

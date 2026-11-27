@@ -1,12 +1,13 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../models/product_model.dart';
 import '../../services/api_service.dart';
 import '../../widgets/app_style.dart';
+import '../../widgets/responsive.dart';
 import '../customer/beranda_screen.dart';
 import 'produk_form_screen.dart';
+
 class KelolaProdukScreen extends StatefulWidget {
   const KelolaProdukScreen({super.key});
 
@@ -83,6 +84,9 @@ class _KelolaProdukScreenState extends State<KelolaProdukScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
           title: const Text('Hapus produk?'),
           content: Text(
             'Produk "${product.name}" akan dihapus.',
@@ -164,8 +168,9 @@ class _KelolaProdukScreenState extends State<KelolaProdukScreen> {
                               bukaForm(null);
                             },
                             style: AppStyle.tombolUtama().copyWith(
-                              minimumSize:
-                                  const WidgetStatePropertyAll(Size(52, 52)),
+                              minimumSize: const WidgetStatePropertyAll(
+                                Size(52, 52),
+                              ),
                               padding: const WidgetStatePropertyAll(
                                 EdgeInsets.zero,
                               ),
@@ -177,8 +182,9 @@ class _KelolaProdukScreenState extends State<KelolaProdukScreen> {
                               bukaForm(null);
                             },
                             style: AppStyle.tombolUtama().copyWith(
-                              minimumSize:
-                                  const WidgetStatePropertyAll(Size(0, 52)),
+                              minimumSize: const WidgetStatePropertyAll(
+                                Size(0, 52),
+                              ),
                               padding: const WidgetStatePropertyAll(
                                 EdgeInsets.symmetric(horizontal: 16),
                               ),
@@ -245,25 +251,47 @@ class _KelolaProdukScreenState extends State<KelolaProdukScreen> {
       return Center(
         child: Text(
           'Belum ada produk.',
-          style: GoogleFonts.poppins(
-            fontSize: 12,
-            color: AppStyle.abuTeks,
-          ),
+          style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.abuTeks),
         ),
       );
     }
 
-    return ListView(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-      children: [
-        for (var product in daftar) buildKartuProduk(product),
-      ],
+    // HP (<700): 1 kolom seperti semula. Tablet/desktop: grid 2-3 kolom.
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final int kolom = kolomGridProduk(constraints.maxWidth);
+
+        if (kolom == 1) {
+          return ListView(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+            children: [for (var product in daftar) buildKartuProduk(product)],
+          );
+        }
+
+        return GridView.builder(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: kolom,
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+            mainAxisExtent: 96,
+          ),
+          itemCount: daftar.length,
+          itemBuilder: (context, index) =>
+              buildKartuProduk(daftar[index], tanpaMarginLuar: true),
+        );
+      },
     );
   }
 
-  Widget buildKartuProduk(ProductModel product) {
+  Widget buildKartuProduk(
+    ProductModel product, {
+    bool tanpaMarginLuar = false,
+  }) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 10),
+      margin: tanpaMarginLuar
+          ? EdgeInsets.zero
+          : const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,

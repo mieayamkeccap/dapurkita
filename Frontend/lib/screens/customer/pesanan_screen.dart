@@ -117,6 +117,7 @@ class _PesananScreenState extends State<PesananScreen> {
         ),
       ),
       body: BatasLebar(
+        maxWidth: lebarKontenAdaptif(context),
         child: Column(
           children: [
             buildFilter(),
@@ -254,17 +255,39 @@ class _PesananScreenState extends State<PesananScreen> {
       );
     }
 
+    // HP (<700): 1 kolom seperti semula. Tablet/desktop: grid 2 kolom.
     return RefreshIndicator(
       onRefresh: loadOrders,
       color: AppStyle.hijauTua,
-      child: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-        children: [for (var order in daftar) buildKartuPesanan(order)],
+      child: LayoutBuilder(
+        builder: (context, batas) {
+          final int kolom = kolomGridProduk(batas.maxWidth);
+
+          if (kolom == 1) {
+            return ListView(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+              children: [for (var order in daftar) buildKartuPesanan(order)],
+            );
+          }
+
+          return GridView.builder(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: kolom > 2 ? 2 : kolom,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              mainAxisExtent: 170,
+            ),
+            itemCount: daftar.length,
+            itemBuilder: (context, index) =>
+                buildKartuPesanan(daftar[index], tanpaMarginLuar: true),
+          );
+        },
       ),
     );
   }
 
-  Widget buildKartuPesanan(OrderModel order) {
+  Widget buildKartuPesanan(OrderModel order, {bool tanpaMarginLuar = false}) {
     Color warna = warnaStatusPesanan(order.orderStatus);
 
     return GestureDetector(
@@ -272,7 +295,9 @@ class _PesananScreenState extends State<PesananScreen> {
         bukaDetail(order);
       },
       child: Container(
-        margin: const EdgeInsets.only(bottom: 12),
+        margin: tanpaMarginLuar
+            ? EdgeInsets.zero
+            : const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -496,6 +521,7 @@ class _DetailPesananScreenState extends State<DetailPesananScreen> {
               child: CircularProgressIndicator(color: AppStyle.hijauTua),
             )
           : BatasLebar(
+              maxWidth: lebarKontenAdaptif(context),
               child: ListView(
                 padding: const EdgeInsets.all(20),
                 children: [
@@ -680,6 +706,7 @@ Future<bool> konfirmasiPesananDiterima(
     context: context,
     builder: (context) {
       return AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text(
           'Pesanan Sudah Diterima?',
           style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w700),

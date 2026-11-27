@@ -5,6 +5,7 @@ import '../../models/order_item_model.dart';
 import '../../models/order_model.dart';
 import '../../services/api_service.dart';
 import '../../widgets/app_style.dart';
+import '../../widgets/responsive.dart';
 import '../customer/pesanan_screen.dart';
 
 class KelolaPesananScreen extends StatefulWidget {
@@ -155,24 +156,48 @@ class _KelolaPesananScreenState extends State<KelolaPesananScreen> {
       );
     }
 
+    // HP (<700): 1 kolom seperti semula. Tablet/desktop: grid 2 kolom.
     return RefreshIndicator(
       onRefresh: loadOrders,
       color: AppStyle.hijauTua,
-      child: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-        children: [for (var order in orders) buildKartuPesanan(order)],
+      child: LayoutBuilder(
+        builder: (context, batas) {
+          final int kolom = kolomGridProduk(batas.maxWidth);
+
+          if (kolom == 1) {
+            return ListView(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+              children: [for (var order in orders) buildKartuPesanan(order)],
+            );
+          }
+
+          return GridView.builder(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: kolom > 2 ? 2 : kolom,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              mainAxisExtent: 300,
+            ),
+            itemCount: orders.length,
+            itemBuilder: (context, index) =>
+                buildKartuPesanan(orders[index], tanpaMarginLuar: true),
+          );
+        },
       ),
     );
   }
 
-  Widget buildKartuPesanan(OrderModel order) {
+  Widget buildKartuPesanan(OrderModel order, {bool tanpaMarginLuar = false}) {
     Color warna = warnaStatusPesanan(order.orderStatus);
     bool perluVerifikasi =
         order.paymentMethod == 'transfer' &&
         order.paymentStatus == 'awaiting_verification';
 
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
+      margin: tanpaMarginLuar
+          ? EdgeInsets.zero
+          : const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -339,6 +364,7 @@ Future<String?> pilihStatusPesanan(
     context: context,
     builder: (dialogContext) {
       return AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text(
           'Ubah status #${order.orderCode}',
           style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w700),
@@ -391,6 +417,7 @@ Future<bool> konfirmasiPesananSelesai(
     context: context,
     builder: (context) {
       return AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text(
           'Pesanan Sudah Selesai?',
           style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w700),

@@ -389,9 +389,29 @@ class _DashboardAdminScreenState extends State<DashboardAdminScreen> {
             ),
           buildBarisKartu(),
           const SizedBox(height: 16),
-          buildGrafik(),
-          const SizedBox(height: 16),
-          buildPesananTerbaru(),
+          // Desktop lebar (>=1000): grafik + pesanan terbaru berdampingan.
+          LayoutBuilder(
+            builder: (context, batas) {
+              if (batas.maxWidth < 1000) {
+                return Column(
+                  children: [
+                    buildGrafik(),
+                    const SizedBox(height: 16),
+                    buildPesananTerbaru(),
+                  ],
+                );
+              }
+
+              return Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(child: buildGrafik()),
+                  const SizedBox(width: 16),
+                  Expanded(child: buildPesananTerbaru()),
+                ],
+              );
+            },
+          ),
         ],
       ),
     );

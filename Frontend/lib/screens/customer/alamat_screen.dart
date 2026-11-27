@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -153,7 +152,10 @@ class _AlamatScreenState extends State<AlamatScreen> {
           ),
         ),
       ),
-      body: BatasLebar(child: buildIsi()),
+      body: BatasLebar(
+        maxWidth: lebarKontenAdaptif(context),
+        child: buildIsi(),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => bukaForm(),
         backgroundColor: AppStyle.hijauTua,
@@ -205,7 +207,11 @@ class _AlamatScreenState extends State<AlamatScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.location_on_outlined, size: 60, color: AppStyle.abuTeks),
+              const Icon(
+                Icons.location_on_outlined,
+                size: 60,
+                color: AppStyle.abuTeks,
+              ),
               const SizedBox(height: 14),
               Text(
                 'Belum ada alamat',
@@ -219,7 +225,10 @@ class _AlamatScreenState extends State<AlamatScreen> {
               Text(
                 'Tekan tombol + untuk menambah alamat pengiriman.',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.abuTeks),
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  color: AppStyle.abuTeks,
+                ),
               ),
             ],
           ),
@@ -240,25 +249,25 @@ class _AlamatScreenState extends State<AlamatScreen> {
     final utama = alamat.utama;
 
     return GestureDetector(
-      onTap: widget.modePilih
-          ? () => Navigator.pop(context, alamat)
-          : null,
+      onTap: widget.modePilih ? () => Navigator.pop(context, alamat) : null,
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: utama ? AppStyle.hijauTua : AppStyle.garis,
-          ),
+          border: Border.all(color: utama ? AppStyle.hijauTua : AppStyle.garis),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                const Icon(Icons.location_on_outlined, color: AppStyle.hijauTua, size: 20),
+                const Icon(
+                  Icons.location_on_outlined,
+                  color: AppStyle.hijauTua,
+                  size: 20,
+                ),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
@@ -272,7 +281,10 @@ class _AlamatScreenState extends State<AlamatScreen> {
                 ),
                 if (utama)
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       color: AppStyle.hijauMuda,
                       borderRadius: BorderRadius.circular(20),
@@ -291,7 +303,11 @@ class _AlamatScreenState extends State<AlamatScreen> {
             const SizedBox(height: 8),
             Text(
               alamat.alamat,
-              style: GoogleFonts.poppins(fontSize: 12, height: 1.5, color: AppStyle.abuTeks),
+              style: GoogleFonts.poppins(
+                fontSize: 12,
+                height: 1.5,
+                color: AppStyle.abuTeks,
+              ),
             ),
             const SizedBox(height: 10),
             Row(
@@ -303,12 +319,19 @@ class _AlamatScreenState extends State<AlamatScreen> {
                 if (!utama)
                   TextButton(
                     onPressed: () => jadikanUtama(alamat),
-                    child: const Text('Jadikan utama', style: TextStyle(fontSize: 12)),
+                    child: const Text(
+                      'Jadikan utama',
+                      style: TextStyle(fontSize: 12),
+                    ),
                   ),
                 const Spacer(),
                 IconButton(
                   onPressed: () => hapus(alamat),
-                  icon: const Icon(Icons.delete_outline_rounded, color: AppStyle.merah, size: 20),
+                  icon: const Icon(
+                    Icons.delete_outline_rounded,
+                    color: AppStyle.merah,
+                    size: 20,
+                  ),
                 ),
               ],
             ),
@@ -389,7 +412,11 @@ class _FormAlamatDialogState extends State<FormAlamatDialog> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       title: Text(
         widget.alamat == null ? 'Tambah alamat' : 'Edit alamat',
-        style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700, color: AppStyle.hijauTua),
+        style: GoogleFonts.poppins(
+          fontSize: 16,
+          fontWeight: FontWeight.w700,
+          color: AppStyle.hijauTua,
+        ),
       ),
       content: SingleChildScrollView(
         child: Column(
@@ -398,14 +425,20 @@ class _FormAlamatDialogState extends State<FormAlamatDialog> {
             TextField(
               controller: labelController,
               style: const TextStyle(fontSize: 13),
-              decoration: AppStyle.kotakIsian(hint: 'Label, mis. Rumah / Kantor', icon: Icons.label_outline_rounded),
+              decoration: AppStyle.kotakIsian(
+                hint: 'Label, mis. Rumah / Kantor',
+                icon: Icons.label_outline_rounded,
+              ),
             ),
             const SizedBox(height: 12),
             TextField(
               controller: alamatController,
               maxLines: 3,
               style: const TextStyle(fontSize: 13),
-              decoration: AppStyle.kotakIsian(hint: 'Alamat lengkap', icon: Icons.location_on_outlined),
+              decoration: AppStyle.kotakIsian(
+                hint: 'Alamat lengkap',
+                icon: Icons.location_on_outlined,
+              ),
             ),
           ],
         ),
@@ -424,7 +457,10 @@ class _FormAlamatDialogState extends State<FormAlamatDialog> {
               ? const SizedBox(
                   width: 16,
                   height: 16,
-                  child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: Colors.white,
+                  ),
                 )
               : const Text('Simpan', style: TextStyle(fontSize: 12)),
         ),

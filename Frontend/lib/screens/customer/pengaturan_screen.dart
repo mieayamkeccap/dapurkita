@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -125,84 +124,110 @@ class _PengaturanScreenState extends State<PengaturanScreen> {
         ),
       ),
       body: BatasLebar(
+        maxWidth: lebarKontenAdaptif(context),
         child: ListView(
-        padding: const EdgeInsets.all(20),
-        children: [
-          buildKartu(
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                buildJudul('Profil Saya'),
-                const SizedBox(height: 10),
-                TextField(
-                  controller: namaController,
-                  style: const TextStyle(fontSize: 13),
-                  decoration: AppStyle.kotakIsian(hint: 'Nama', icon: Icons.person_outline_rounded),
-                ),
-                const SizedBox(height: 10),
-                TextField(
-                  controller: teleponController,
-                  keyboardType: TextInputType.phone,
-                  style: const TextStyle(fontSize: 13),
-                  decoration: AppStyle.kotakIsian(hint: 'Nomor telepon', icon: Icons.phone_outlined),
-                ),
-                const SizedBox(height: 12),
-                SizedBox(
-                  width: double.infinity,
-                  height: 46,
-                  child: ElevatedButton(
-                    onPressed: isLoading ? null : simpanProfil,
-                    style: AppStyle.tombolUtama().copyWith(
-                      minimumSize: const WidgetStatePropertyAll(Size(double.infinity, 46)),
+          padding: const EdgeInsets.all(20),
+          children: [
+            buildKartu(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  buildJudul('Profil Saya'),
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: namaController,
+                    style: const TextStyle(fontSize: 13),
+                    decoration: AppStyle.kotakIsian(
+                      hint: 'Nama',
+                      icon: Icons.person_outline_rounded,
                     ),
-                    child: const Text('Simpan Profil', style: TextStyle(fontSize: 13)),
                   ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 14),
-          buildKartu(
-            Material(
-              color: Colors.transparent,
-              child: SwitchListTile(
-                contentPadding: EdgeInsets.zero,
-                title: Text(
-                  'Notifikasi Pesanan',
-                  style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: AppStyle.hijauTua),
-                ),
-                subtitle: Text(
-                  'Terima info status pesanan (disimpan lokal)',
-                  style: GoogleFonts.poppins(fontSize: 11, color: AppStyle.abuTeks),
-                ),
-                value: notifikasi,
-                onChanged: (value) async {
-                  setState(() => notifikasi = value);
-                  await PengaturanStore.simpanNotifikasi(value);
-                },
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: teleponController,
+                    keyboardType: TextInputType.phone,
+                    style: const TextStyle(fontSize: 13),
+                    decoration: AppStyle.kotakIsian(
+                      hint: 'Nomor telepon',
+                      icon: Icons.phone_outlined,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 46,
+                    child: ElevatedButton(
+                      onPressed: isLoading ? null : simpanProfil,
+                      style: AppStyle.tombolUtama().copyWith(
+                        minimumSize: const WidgetStatePropertyAll(
+                          Size(double.infinity, 46),
+                        ),
+                      ),
+                      child: const Text(
+                        'Simpan Profil',
+                        style: TextStyle(fontSize: 13),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-          const SizedBox(height: 14),
-          buildKartu(
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                buildJudul('Tentang'),
-                const SizedBox(height: 8),
-                Text(
-                  'DapurKita v1.0.0',
-                  style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600, color: AppStyle.hijauTua),
+            const SizedBox(height: 14),
+            buildKartu(
+              Material(
+                color: Colors.transparent,
+                child: SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(
+                    'Notifikasi Pesanan',
+                    style: GoogleFonts.poppins(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: AppStyle.hijauTua,
+                    ),
+                  ),
+                  subtitle: Text(
+                    'Terima info status pesanan (disimpan lokal)',
+                    style: GoogleFonts.poppins(
+                      fontSize: 11,
+                      color: AppStyle.abuTeks,
+                    ),
+                  ),
+                  value: notifikasi,
+                  onChanged: (value) async {
+                    setState(() => notifikasi = value);
+                    await PengaturanStore.simpanNotifikasi(value);
+                  },
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  'Nikmatnya Kuliner, Dalam Genggaman',
-                  style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.abuTeks),
-                ),
-              ],
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 14),
+            buildKartu(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  buildJudul('Tentang'),
+                  const SizedBox(height: 8),
+                  Text(
+                    'DapurKita v1.0.0',
+                    style: GoogleFonts.poppins(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: AppStyle.hijauTua,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'Nikmatnya Kuliner, Dalam Genggaman',
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      color: AppStyle.abuTeks,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -211,7 +236,11 @@ class _PengaturanScreenState extends State<PengaturanScreen> {
   Widget buildJudul(String judul) {
     return Text(
       judul,
-      style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w700, color: AppStyle.hijauTua),
+      style: GoogleFonts.poppins(
+        fontSize: 13,
+        fontWeight: FontWeight.w700,
+        color: AppStyle.hijauTua,
+      ),
     );
   }
 

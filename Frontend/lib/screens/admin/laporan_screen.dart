@@ -73,12 +73,47 @@ class _LaporanScreenState extends State<LaporanScreen> {
             errorMessage,
             style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.merah),
           ),
-        buildKartu('Total Pesanan', '$totalPesanan pesanan', AppStyle.oranye),
-        const SizedBox(height: 10),
-        buildKartu(
-          'Total Pendapatan',
-          formatRupiah(totalPendapatan),
-          const Color(0xFF2F80ED),
+        // HP: susun bawah seperti semula. Desktop: dua kartu berdampingan.
+        LayoutBuilder(
+          builder: (context, batas) {
+            if (batas.maxWidth < 700) {
+              return Column(
+                children: [
+                  buildKartu(
+                    'Total Pesanan',
+                    '$totalPesanan pesanan',
+                    AppStyle.oranye,
+                  ),
+                  const SizedBox(height: 10),
+                  buildKartu(
+                    'Total Pendapatan',
+                    formatRupiah(totalPendapatan),
+                    const Color(0xFF2F80ED),
+                  ),
+                ],
+              );
+            }
+
+            return Row(
+              children: [
+                Expanded(
+                  child: buildKartu(
+                    'Total Pesanan',
+                    '$totalPesanan pesanan',
+                    AppStyle.oranye,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: buildKartu(
+                    'Total Pendapatan',
+                    formatRupiah(totalPendapatan),
+                    const Color(0xFF2F80ED),
+                  ),
+                ),
+              ],
+            );
+          },
         ),
         const SizedBox(height: 16),
         Container(

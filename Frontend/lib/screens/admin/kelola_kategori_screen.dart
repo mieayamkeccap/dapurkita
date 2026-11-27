@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -67,6 +66,9 @@ class _KelolaKategoriScreenState extends State<KelolaKategoriScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
           title: const Text('Hapus kategori?'),
           content: Text(
             'Kategori "${kategori.name}" akan dihapus.',
@@ -155,10 +157,7 @@ class _KelolaKategoriScreenState extends State<KelolaKategoriScreen> {
         child: Text(
           errorMessage,
           textAlign: TextAlign.center,
-          style: GoogleFonts.poppins(
-            fontSize: 12,
-            color: AppStyle.abuTeks,
-          ),
+          style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.abuTeks),
         ),
       );
     }
@@ -167,19 +166,14 @@ class _KelolaKategoriScreenState extends State<KelolaKategoriScreen> {
       return Center(
         child: Text(
           'Belum ada kategori.',
-          style: GoogleFonts.poppins(
-            fontSize: 12,
-            color: AppStyle.abuTeks,
-          ),
+          style: GoogleFonts.poppins(fontSize: 12, color: AppStyle.abuTeks),
         ),
       );
     }
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-      children: [
-        for (var kategori in categories) buildKartuKategori(kategori),
-      ],
+      children: [for (var kategori in categories) buildKartuKategori(kategori)],
     );
   }
 
@@ -265,11 +259,7 @@ class DialogKategori extends StatefulWidget {
   final CategoryModel? kategori;
   final VoidCallback setelahSimpan;
 
-  const DialogKategori({
-    super.key,
-    this.kategori,
-    required this.setelahSimpan,
-  });
+  const DialogKategori({super.key, this.kategori, required this.setelahSimpan});
 
   @override
   State<DialogKategori> createState() => _DialogKategoriState();
@@ -344,12 +334,10 @@ class _DialogKategoriState extends State<DialogKategori> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       title: Text(
         widget.kategori == null ? 'Tambah Kategori' : 'Edit Kategori',
-        style: GoogleFonts.poppins(
-          fontSize: 16,
-          fontWeight: FontWeight.w700,
-        ),
+        style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700),
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
